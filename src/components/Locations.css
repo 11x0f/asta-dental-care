@@ -1,0 +1,9 @@
+.locations { background: var(--sky-pale); }
+.locations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.location-card { background: var(--white); border-radius: var(--radius); padding: 32px; border: 1px solid var(--border); transition: all .25s; }
+.location-card:hover { border-color: var(--sky); box-shadow: var(--shadow); }
+.location-icon { font-size: 1.8rem; margin-bottom: 16px; }
+.location-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 10px; }
+.location-card address { font-style: normal; font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+.location-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--sky-dark); text-decoration: none; }
+.location-link:hover { text-decoration: underline; }

@@ -1,0 +1,11 @@
+.services { background: var(--sky-pale); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.service-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 28px; border: 1px solid var(--border);
+  transition: all .25s; cursor: default;
+}
+.service-card:hover { border-color: var(--sky); box-shadow: var(--shadow); transform: translateY(-3px); }
+.service-icon { font-size: 2rem; margin-bottom: 16px; }
+.service-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.15rem; margin-bottom: 10px; }
+.service-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }

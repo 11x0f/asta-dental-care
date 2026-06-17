@@ -1,0 +1,8 @@
+.team { background: var(--sky-pale); }
+.team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+.team-card { background: var(--white); border-radius: var(--radius); padding: 28px 24px; text-align: center; border: 1px solid var(--border); transition: all .25s; }
+.team-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); border-color: var(--sky); }
+.team-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--sky-light), var(--sky)); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.8rem; }
+.team-card h4 { font-family: 'DM Serif Display', serif; font-size: 1rem; margin-bottom: 6px; }
+.team-role { font-size: 0.78rem; color: var(--sky-dark); font-weight: 600; margin-bottom: 4px; }
+.team-creds { font-size: 0.78rem; color: var(--muted); }

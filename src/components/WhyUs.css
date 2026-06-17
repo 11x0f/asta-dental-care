@@ -1,0 +1,10 @@
+.why { padding: 96px 5%; }
+.why-wrapper { display: flex; gap: 64px; align-items: center; flex-wrap: wrap; }
+.why-content { flex: 1; min-width: 280px; }
+.why-grid { flex: 1.2; min-width: 280px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.why-card { background: var(--sky-pale); border: 1px solid var(--sky-light); border-radius: var(--radius); padding: 24px; transition: all .25s; }
+.why-card:hover { border-color: var(--sky); box-shadow: var(--shadow); }
+.why-card-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.why-card h4 { font-family: 'DM Serif Display', serif; font-size: 1rem; margin-bottom: 6px; }
+.why-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+@media (max-width: 600px) { .why-grid { grid-template-columns: 1fr; } }

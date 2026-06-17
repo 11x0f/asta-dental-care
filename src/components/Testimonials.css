@@ -1,0 +1,9 @@
+.testimonials { padding: 96px 5%; overflow: hidden; }
+.testimonials-track { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 16px; scroll-snap-type: x mandatory; }
+.testimonials-track::-webkit-scrollbar { height: 4px; }
+.testimonials-track::-webkit-scrollbar-track { background: var(--sky-pale); border-radius: 4px; }
+.testimonials-track::-webkit-scrollbar-thumb { background: var(--sky); border-radius: 4px; }
+.testi-card { background: var(--sky-pale); border: 1px solid var(--sky-light); border-radius: var(--radius); padding: 32px; min-width: 340px; max-width: 380px; flex-shrink: 0; scroll-snap-align: start; }
+.testi-stars { color: #f59e0b; font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+.testi-text { font-size: 0.9rem; color: var(--ink); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+.testi-author { font-weight: 600; font-size: 0.85rem; color: var(--sky-deeper); }

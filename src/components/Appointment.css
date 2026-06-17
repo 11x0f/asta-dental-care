@@ -1,0 +1,165 @@
+/* ── Section ── */
+.appointment { background: linear-gradient(135deg, var(--sky-deeper) 0%, var(--sky-dark) 100%); padding: 96px 5%; color: white; }
+.appointment .section-title { color: white; }
+.appt-eyebrow { color: rgba(255,255,255,.7) !important; }
+.appt-sub { color: rgba(255,255,255,.8) !important; }
+.appt-wrapper { display: flex; gap: 60px; align-items: flex-start; flex-wrap: wrap; }
+.appt-info { flex: 1; min-width: 260px; }
+.appt-form { flex: 1.4; min-width: 340px; }
+
+/* Info features */
+.appt-features { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+.appt-feature { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: rgba(255,255,255,.85); }
+.appt-feature-icon { width: 36px; height: 36px; background: rgba(255,255,255,.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+
+/* Selected summary */
+.appt-selection { margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.2); display: flex; flex-direction: column; gap: 8px; }
+.appt-sel-row { font-size: 0.85rem; color: #fff; font-weight: 600; }
+
+/* ── Booking card — deep contrast on blue ── */
+.booking-card {
+  background: rgba(2, 48, 90, 0.75);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+/* ── Calendar + Time wrapper ── */
+.cal-time-wrapper { display: flex; gap: 28px; }
+
+/* ── Calendar ── */
+.cal-panel { flex: 1; min-width: 0; }
+.cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.cal-month { font-size: 1.05rem; color: #fff; font-weight: 600; letter-spacing: 0.01em; }
+.cal-nav-btn {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; width: 32px; height: 32px;
+  border-radius: 8px; font-size: 1rem;
+  cursor: pointer; transition: background .2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.cal-nav-btn:hover { background: rgba(255,255,255,0.25); }
+
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.cal-dow { text-align: center; font-size: 0.68rem; font-weight: 800; color: rgba(255,255,255,.55); padding: 6px 0; letter-spacing: .1em; }
+
+.cal-day {
+  position: relative; aspect-ratio: 1;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px; color: #fff;
+  font-size: 0.875rem; font-family: 'Inter', sans-serif; font-weight: 500;
+  cursor: pointer; transition: all .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.cal-day:hover:not(.past):not(.other) {
+  background: rgba(255,255,255,.2);
+  border-color: rgba(255,255,255,.5);
+  color: #fff;
+  transform: scale(1.05);
+}
+.cal-day.other { background: transparent; border-color: transparent; color: rgba(255,255,255,.2); cursor: default; }
+.cal-day.past  { background: transparent; border-color: transparent; color: rgba(255,255,255,.2); cursor: not-allowed; opacity: 0.35; }
+.cal-day.today {
+  font-weight: 800; color: #fff;
+  border: 2px solid #fff;
+  background: rgba(255,255,255,.15);
+}
+.cal-day.selected {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: var(--sky-deeper) !important;
+  font-weight: 800;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  transform: scale(1.05);
+}
+
+/* ── Time panel ── */
+.time-panel { width: 175px; flex-shrink: 0; display: flex; flex-direction: column; }
+.time-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.time-day { font-size: 0.95rem; font-weight: 700; color: #fff; }
+
+.fmt-toggle {
+  display: flex;
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 7px; overflow: hidden;
+}
+.fmt-toggle button {
+  background: none; border: none; color: rgba(255,255,255,.55);
+  padding: 4px 10px; font-size: 0.72rem; font-weight: 700;
+  cursor: pointer; transition: all .15s; font-family: 'Inter', sans-serif;
+}
+.fmt-toggle button.active { background: rgba(255,255,255,.25); color: #fff; }
+
+.time-slots {
+  display: flex; flex-direction: column; gap: 7px;
+  overflow-y: auto; max-height: 370px; padding-right: 3px;
+}
+.time-slots::-webkit-scrollbar { width: 3px; }
+.time-slots::-webkit-scrollbar-thumb { background: rgba(255,255,255,.3); border-radius: 3px; }
+
+.time-slot {
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 10px; color: #fff;
+  padding: 12px 10px; font-size: 0.875rem; font-weight: 500;
+  cursor: pointer; transition: all .15s; text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+.time-slot:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.6); transform: scale(1.02); }
+.time-slot.selected { background: #fff; color: var(--sky-deeper); border-color: #fff; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+/* ── Details form ── */
+.back-btn {
+  background: none; border: none; color: rgba(255,255,255,.6);
+  font-size: 0.85rem; cursor: pointer; padding: 0;
+  margin-bottom: 14px; font-family: 'Inter', sans-serif; transition: color .2s;
+}
+.back-btn:hover { color: #fff; }
+.details-sub { font-size: 0.875rem; color: #fff; font-weight: 600; margin-bottom: 22px; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,.75); letter-spacing: .06em; text-transform: uppercase; }
+.form-group input, .form-group select, .form-group textarea {
+  background: rgba(0,0,0,.2);
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 9px; padding: 11px 14px;
+  font-family: 'Inter', sans-serif; font-size: 0.9rem;
+  color: white; outline: none; transition: border .2s;
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,.4); }
+.form-group select option { color: var(--ink); background: white; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #fff; }
+
+.form-submit {
+  margin-top: 20px; width: 100%; background: white;
+  color: var(--sky-deeper); border: none; padding: 15px;
+  border-radius: 10px; font-weight: 700; font-size: 0.95rem;
+  cursor: pointer; transition: all .2s; font-family: 'Inter', sans-serif;
+}
+.form-submit:hover { background: var(--sky-light); transform: translateY(-1px); }
+.form-disclaimer { font-size: 0.75rem; color: rgba(255,255,255,.45); margin-top: 12px; text-align: center; }
+
+/* ── Confirmed ── */
+.appt-success { text-align: center; }
+.success-icon { font-size: 2.5rem; margin-bottom: 16px; }
+.success-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 8px; color: #fff; }
+.success-sub { font-size: 0.9rem; color: rgba(255,255,255,.8); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .appt-wrapper { flex-direction: column; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .cal-time-wrapper { flex-direction: column; }
+  .time-panel { width: 100%; }
+  .time-slots { display: grid; grid-template-columns: repeat(3, 1fr); max-height: none; }
+  .booking-card { padding: 20px; }
+}
