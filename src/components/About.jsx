@@ -31,7 +31,7 @@ export default function About() {
       </div>
       <div className="about-content">
         <div className="section-eyebrow">About Us</div>
-        <h2 className="section-title">Elite Dental Studio</h2>
+        <h2 className="section-title">Asta Dental Care</h2>
         <p className="section-sub">
           Kerala's premier multi-specialty dental clinic, serving Kochi, Calicut, and Kannur with
           state-of-the-art facilities and a team of dedicated specialists. Our mission: to exceed

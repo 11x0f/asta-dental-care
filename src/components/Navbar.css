@@ -1,5 +1,5 @@
 /* ══════════════════════════════
-   NAVBAR — Glass / dark cinematic
+   NAVBAR — Glass / theme-aware
    ══════════════════════════════ */
 
 .nav {
@@ -11,26 +11,22 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 5%;
-
-  /* Glass — fully transparent over the hero image */
-  background: rgba(4, 12, 24, 0.15);
+  background: var(--nav-bg);
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  border-bottom: none;
-  transition: background 0.4s ease, box-shadow 0.4s ease;
+  border-bottom: 1px solid var(--nav-border, transparent);
+  transition: background 0.35s ease, box-shadow 0.35s ease;
 }
-
-/* Scrolled state — darker glass so it stays readable over light sections */
 .nav.scrolled {
-  background: rgba(6, 16, 32, 0.82);
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.35);
+  background: var(--nav-bg-scroll);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.15);
 }
 
 /* ── Logo ── */
 .nav-logo {
   font-family: 'DM Serif Display', serif;
   font-size: 1.35rem;
-  color: #ffffff;
+  color: var(--text-primary);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -39,8 +35,8 @@
   flex-shrink: 0;
   transition: opacity 0.2s;
 }
-.nav-logo:hover { opacity: 0.85; }
-.nav-logo span { color: #38bdf8; }
+.nav-logo:hover { opacity: 0.8; }
+.nav-logo span { color: var(--sky); }
 
 /* ── Links ── */
 .nav-links {
@@ -51,7 +47,7 @@
 }
 .nav-links a {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-secondary);
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -64,23 +60,80 @@
   position: absolute;
   bottom: -2px; left: 0;
   width: 0; height: 1.5px;
-  background: #38bdf8;
+  background: var(--sky);
   border-radius: 2px;
   transition: width 0.25s ease;
 }
 .nav-links a:hover,
-.nav-links a.active {
-  color: #ffffff;
-}
+.nav-links a.active { color: var(--text-primary); }
 .nav-links a:hover::after,
-.nav-links a.active::after {
-  width: 100%;
+.nav-links a.active::after { width: 100%; }
+
+/* ── Right group ── */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
-/* ── CTA button ── */
+/* ── Theme toggle ── */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.toggle-track {
+  width: 48px; height: 26px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  transition: background 0.3s, border-color 0.3s;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+}
+.toggle-track.dark {
+  background: rgba(56,189,248,0.2);
+  border-color: rgba(56,189,248,0.4);
+}
+
+/* Light theme track */
+[data-theme="light"] .toggle-track {
+  background: rgba(0,0,0,0.08);
+  border-color: rgba(0,0,0,0.15);
+}
+[data-theme="light"] .toggle-track.dark {
+  background: rgba(2,132,199,0.15);
+  border-color: rgba(2,132,199,0.3);
+}
+
+.toggle-thumb {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0369a1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s;
+  transform: translateX(0);
+}
+.toggle-track.dark .toggle-thumb {
+  transform: translateX(22px);
+  background: #0c1a2e;
+  color: #38bdf8;
+}
+
+/* ── CTA ── */
 .nav-cta {
-  background: #38bdf8;
-  color: #03111f;
+  background: var(--sky);
+  color: #fff;
   border: none;
   padding: 10px 22px;
   border-radius: 8px;
@@ -88,13 +141,13 @@
   font-size: 0.85rem;
   cursor: pointer;
   letter-spacing: 0.01em;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-  flex-shrink: 0;
+  transition: all 0.2s;
 }
+[data-theme="dark"] .nav-cta { color: #03111f; }
 .nav-cta:hover {
-  background: #7dd3fc;
+  filter: brightness(1.1);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35);
+  box-shadow: 0 6px 20px rgba(56,189,248,0.3);
 }
 
 /* ── Mobile hamburger ── */
@@ -112,7 +165,7 @@
 .nav-mobile-btn span {
   display: block;
   width: 100%; height: 1.5px;
-  background: rgba(255,255,255,0.8);
+  background: var(--text-primary);
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
@@ -128,15 +181,14 @@
   position: fixed;
   top: 72px; left: 0; right: 0;
   z-index: 199;
-  background: rgba(6, 14, 28, 0.96);
+  background: var(--drawer-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid var(--border);
   padding: 0 5%;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              padding 0.3s ease;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s ease;
 }
 .mobile-drawer.open {
   max-height: 480px;
@@ -153,17 +205,17 @@
   display: block;
   padding: 14px 0;
   text-decoration: none;
-  color: rgba(255,255,255,0.7);
+  color: var(--text-secondary);
   font-size: 1.05rem;
   font-weight: 500;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid var(--border);
   transition: color 0.2s;
 }
-.mobile-drawer ul a:hover { color: #fff; }
+.mobile-drawer ul a:hover { color: var(--sky); }
 .drawer-cta {
   width: 100%;
-  background: #38bdf8;
-  color: #03111f;
+  background: var(--sky);
+  color: #fff;
   border: none;
   padding: 14px;
   border-radius: 8px;
@@ -171,19 +223,20 @@
   font-size: 0.95rem;
   cursor: pointer;
 }
+[data-theme="dark"] .drawer-cta { color: #03111f; }
 
 .drawer-backdrop {
   position: fixed;
   inset: 0;
   z-index: 198;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.3);
 }
 
 /* ══════════════════════════════
    RESPONSIVE
    ══════════════════════════════ */
 @media (max-width: 900px) {
-  .nav-links { display: none; }
-  .nav-cta   { display: none; }
+  .nav-links  { display: none; }
+  .nav-right  { display: none; }
   .nav-mobile-btn { display: flex; }
 }

@@ -1,9 +1,75 @@
-.locations { background: var(--sky-pale); }
-.locations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-.location-card { background: var(--white); border-radius: var(--radius); padding: 32px; border: 1px solid var(--border); transition: all .25s; }
-.location-card:hover { border-color: var(--sky); box-shadow: var(--shadow); }
-.location-icon { font-size: 1.8rem; margin-bottom: 16px; }
-.location-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 10px; }
-.location-card address { font-style: normal; font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
-.location-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--sky-dark); text-decoration: none; }
-.location-link:hover { text-decoration: underline; }
+.locations {
+  background: var(--bg-2);
+  position: relative;
+}
+.locations::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--sky-glow), transparent);
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.location-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.location-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(to bottom, var(--sky), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.location-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--glow);
+}
+.location-card:hover::before { opacity: 1; }
+
+.location-icon {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  display: block;
+}
+.location-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.location-card address {
+  font-style: normal;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.location-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--sky);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: gap 0.2s;
+}
+.location-link:hover { gap: 10px; }

@@ -1,10 +1,71 @@
-.why { padding: 96px 5%; }
-.why-wrapper { display: flex; gap: 64px; align-items: center; flex-wrap: wrap; }
+.why {
+  background: var(--bg-1);
+  padding: 100px 5%;
+  position: relative;
+}
+.why::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--sky-glow), transparent);
+}
+
+.why-inner {
+  display: flex;
+  gap: 72px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .why-content { flex: 1; min-width: 280px; }
-.why-grid { flex: 1.2; min-width: 280px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.why-card { background: var(--sky-pale); border: 1px solid var(--sky-light); border-radius: var(--radius); padding: 24px; transition: all .25s; }
-.why-card:hover { border-color: var(--sky); box-shadow: var(--shadow); }
-.why-card-icon { font-size: 1.8rem; margin-bottom: 12px; }
-.why-card h4 { font-family: 'DM Serif Display', serif; font-size: 1rem; margin-bottom: 6px; }
-.why-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
-@media (max-width: 600px) { .why-grid { grid-template-columns: 1fr; } }
+.why-grid {
+  flex: 1.2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.why-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--sky), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.why-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+}
+.why-card:hover::before { opacity: 1; }
+
+.why-card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+.why-card h4 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.why-card p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) { .why-inner { flex-direction: column; gap: 48px; } }
+@media (max-width: 500px) { .why-grid { grid-template-columns: 1fr; } }

@@ -1,8 +1,160 @@
-.team { background: var(--sky-pale); }
-.team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
-.team-card { background: var(--white); border-radius: var(--radius); padding: 28px 24px; text-align: center; border: 1px solid var(--border); transition: all .25s; }
-.team-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); border-color: var(--sky); }
-.team-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--sky-light), var(--sky)); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.8rem; }
-.team-card h4 { font-family: 'DM Serif Display', serif; font-size: 1rem; margin-bottom: 6px; }
-.team-role { font-size: 0.78rem; color: var(--sky-dark); font-weight: 600; margin-bottom: 4px; }
-.team-creds { font-size: 0.78rem; color: var(--muted); }
+/* ══════════════════════════════════════
+   TEAM — Infinite horizontal marquee
+   ══════════════════════════════════════ */
+
+.team {
+  background: var(--bg-2);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.team::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(56,189,248,0.25), transparent);
+}
+
+.team .section-header { padding: 0 5%; }
+
+/* ── Marquee wrapper ── */
+.team-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-fade {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 180px;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee-fade.left  { left: 0;  background: linear-gradient(to right, var(--fade-team), transparent); }
+.marquee-fade.right { right: 0; background: linear-gradient(to left,  var(--fade-team), transparent); }
+
+/* ── Scrolling track ── */
+.team-marquee-track {
+  display: flex;
+  gap: 20px;
+  padding: 16px 0 24px;
+  width: max-content;
+  animation: teamMarquee 32s linear infinite;
+}
+.team-marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes teamMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ══════════════════════════════════════
+   DOCTOR CARD
+   ══════════════════════════════════════ */
+.doctor-card {
+  flex-shrink: 0;
+  width: 240px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+.doctor-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(56,189,248,0.25);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(56,189,248,0.1);
+}
+
+/* ── Photo ── */
+.doctor-photo {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+.doctor-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.doctor-card:hover .doctor-img { transform: scale(1.06); }
+
+/* Dark bottom fade so info reads cleanly */
+.doctor-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(9,21,38,0.7) 75%,
+    var(--bg-card) 100%
+  );
+  z-index: 1;
+}
+
+/* Colored glow at bottom */
+.doctor-glow {
+  position: absolute;
+  width: 100px; height: 60px;
+  border-radius: 50%;
+  opacity: 0.2;
+  filter: blur(20px);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  transition: opacity 0.3s;
+}
+.doctor-card:hover .doctor-glow { opacity: 0.4; }
+
+/* ── Info ── */
+.doctor-info {
+  padding: 16px 20px 24px;
+}
+
+.doctor-specialty-tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid;
+  margin-bottom: 10px;
+}
+
+.doctor-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+  line-height: 1.25;
+  transition: color 0.2s;
+}
+.doctor-card:hover .doctor-name { color: #7dd3fc; }
+
+.doctor-role {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.doctor-creds {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .team-marquee-track { animation: none; overflow-x: auto; }
+}
