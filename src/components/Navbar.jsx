@@ -13,7 +13,7 @@ export default function Navbar() {
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
   const [active,    setActive]    = useState('');
-  const [dark,      setDark]      = useState(true);
+  const [dark,      setDark]      = useState(false);
 
   // Apply theme to <html> so all CSS vars cascade
   useEffect(() => {

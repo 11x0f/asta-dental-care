@@ -18,14 +18,14 @@
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url('../../public/hero-bg.png') center top / cover no-repeat;
-  transform: scale(1.04);
+  background: #03080f url('../../public/hero-bg.png') center 100% / 100% auto no-repeat;
   animation: heroZoom 12s ease-out forwards;
 }
 @keyframes heroZoom {
-  from { transform: scale(1.08); }
-  to   { transform: scale(1.0); }
+  from { background-size: 106% auto; background-position: center 55%; }
+  to   { background-size: 100% auto; background-position: center 55%; }
 }
+
 
 /* Dark gradient from bottom-left — keeps text readable */
 .hero-overlay-gradient {

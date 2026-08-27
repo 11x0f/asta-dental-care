@@ -13,12 +13,13 @@ export const services = [
 ];
 
 export const team = [
-  { emoji: '👨‍⚕️', name: 'Dr. Vipin Viswanath', role: 'Medical Director', creds: 'BDS, MDS — Oral Maxillofacial Surgeon' },
-  { emoji: '👨‍⚕️', name: 'Dr. Jafar Hamza', role: 'Managing Director, Kochi', creds: 'BDS, PG Clinical Residency (Europe)' },
-  { emoji: '👨‍⚕️', name: 'Dr. Amal Sidharth', role: 'Managing Director, Calicut', creds: 'BDS, MDS — Pedodontist' },
-  { emoji: '👨‍⚕️', name: 'Dr. Sreenath Narayanan', role: 'Medical Director, Calicut', creds: 'BDS, MDS — Endodontist' },
-  { emoji: '👩‍⚕️', name: 'Dr. Megha C', role: 'Pediatric Dentistry', creds: 'BDS, MDS' },
-  { emoji: '👩‍⚕️', name: 'Dr. Fathima Nifla C.P', role: 'Director & Endodontist', creds: 'BDS, MDS' },
+  { name: 'Dr. Anurag Vinod', initials: 'AV', title: 'Pedodontist', sub: 'Chief Dental Surgeon · Root Canal Specialist', color: '#38bdf8' },
+  { name: 'Dr. Raymond Joseph Pereira', initials: 'RP', title: 'Oral Maxillofacial Surgeon', sub: 'Implantologist', color: '#c084fc' },
+  { name: 'Dr. Siddharth Kottian', initials: 'SK', title: 'Orthodontist', sub: 'Certified Invisalign Provider', color: '#2dd4bf' },
+  { name: 'Dr. Athira Rajeevan K', initials: 'AR', title: 'Orthodontist', sub: '', color: '#818cf8' },
+  { name: 'Dr. Mohammad PK', initials: 'MP', title: 'Biomimetic Dentist', sub: '', color: '#f472b6' },
+  { name: 'Dr. Sarun E', initials: 'SE', title: 'Periodontist', sub: '', color: '#fb923c' },
+  { name: 'Dr. Miran Abdul Khader', initials: 'MK', title: 'Resident Dental Surgeon', sub: '', color: '#facc15' },
 ];
 
 export const testimonials = [

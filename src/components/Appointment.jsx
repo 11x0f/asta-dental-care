@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { services, locations } from '../data';
+import { services, team } from '../data';
 import './Appointment.css';
 
 const SLOT_DURATION = 30;
@@ -50,7 +50,7 @@ export default function Appointment() {
   const [selDate, setSelDate]     = useState(null);
   const [selSlot, setSelSlot]     = useState(null);
   const [fmt, setFmt]             = useState('12h');
-  const [formData, setFormData]   = useState({ name:'', phone:'', email:'', location:'', service:'', message:'' });
+  const [formData, setFormData]   = useState({ name:'', phone:'', doctor:'', service:'', message:'' });
 
   const cells = calendarDays(viewYear, viewMonth);
 
@@ -90,7 +90,7 @@ export default function Appointment() {
   const handleSubmit = e => { e.preventDefault(); setStep('confirmed'); };
   const reset = () => {
     setStep('calendar'); setSelDate(null); setSelSlot(null);
-    setFormData({ name:'', phone:'', email:'', location:'', service:'', message:'' });
+    setFormData({ name:'', phone:'', doctor:'', service:'', message:'' });
   };
 
   return (
@@ -217,17 +217,13 @@ export default function Appointment() {
                     <input name="phone" placeholder="+91 00000 00000" value={formData.phone} onChange={handleChange} required />
                   </div>
                   <div className="form-group">
-                    <label>Email</label>
-                    <input name="email" type="email" placeholder="you@example.com" value={formData.email} onChange={handleChange} />
-                  </div>
-                  <div className="form-group">
-                    <label>Location</label>
-                    <select name="location" value={formData.location} onChange={handleChange} required>
-                      <option value="">Select clinic</option>
-                      {locations.map(l => <option key={l.name}>{l.name}</option>)}
+                    <label>Preferred Doctor</label>
+                    <select name="doctor" value={formData.doctor} onChange={handleChange}>
+                      <option value="">Select a doctor (optional)</option>
+                      {team.map(d => <option key={d.name}>{d.name}</option>)}
                     </select>
                   </div>
-                  <div className="form-group full">
+                  <div className="form-group">
                     <label>Service Needed</label>
                     <select name="service" value={formData.service} onChange={handleChange}>
                       <option value="">Select a service (optional)</option>

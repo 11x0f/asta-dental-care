@@ -16,7 +16,7 @@
   background: linear-gradient(to right, transparent, rgba(56,189,248,0.25), transparent);
 }
 
-.team .section-header { padding: 0 5%; }
+.team .section-header { padding: 0 5%; margin-bottom: 24px; }
 
 /* ── Marquee wrapper ── */
 .team-marquee-wrapper {
@@ -38,13 +38,9 @@
 /* ── Scrolling track ── */
 .team-marquee-track {
   display: flex;
-  gap: 20px;
-  padding: 16px 0 24px;
+  padding: 44px 0 84px;
   width: max-content;
-  animation: teamMarquee 32s linear infinite;
-}
-.team-marquee-track:hover {
-  animation-play-state: paused;
+  animation: teamMarquee 34s linear infinite;
 }
 @keyframes teamMarquee {
   from { transform: translateX(0); }
@@ -52,109 +48,87 @@
 }
 
 /* ══════════════════════════════════════
-   DOCTOR CARD
+   DOCTOR CARD — coverflow poster
    ══════════════════════════════════════ */
 .doctor-card {
   flex-shrink: 0;
-  width: 240px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
+  width: 300px;
+  aspect-ratio: 3 / 4;
+  margin-left: -72px;
+  position: relative;
+  border-radius: 30px;
   overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transform-origin: center center;
+  will-change: transform, opacity, filter;
   cursor: default;
 }
-.doctor-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(56,189,248,0.25);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(56,189,248,0.1);
+.doctor-card:first-child {
+  margin-left: 0;
 }
 
-/* ── Photo ── */
-.doctor-photo {
-  position: relative;
-  height: 220px;
-  overflow: hidden;
+/* ── Avatar / placeholder photo ── */
+.doctor-avatar {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-card);
 }
-.doctor-img {
+.doctor-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center 20%;
   display: block;
-  transition: transform 0.5s ease;
 }
-.doctor-card:hover .doctor-img { transform: scale(1.06); }
 
-/* Dark bottom fade so info reads cleanly */
-.doctor-photo-overlay {
+.doctor-card-vignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 40%,
-    rgba(9,21,38,0.7) 75%,
-    var(--bg-card) 100%
-  );
+  background: var(--card-overlay);
   z-index: 1;
 }
 
-/* Colored glow at bottom */
-.doctor-glow {
+/* ── Label chip ── */
+.doctor-label {
   position: absolute;
-  width: 100px; height: 60px;
-  border-radius: 50%;
-  opacity: 0.2;
-  filter: blur(20px);
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 14px;
+  right: 14px;
+  bottom: 16px;
   z-index: 2;
-  transition: opacity 0.3s;
-}
-.doctor-card:hover .doctor-glow { opacity: 0.4; }
-
-/* ── Info ── */
-.doctor-info {
-  padding: 16px 20px 24px;
-}
-
-.doctor-specialty-tag {
-  display: inline-block;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 100px;
-  border: 1px solid;
-  margin-bottom: 10px;
+  padding: 15px 17px 17px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  text-align: center;
 }
 
 .doctor-name {
   font-family: 'DM Serif Display', serif;
-  font-size: 1rem;
+  font-size: 1.18rem;
   color: var(--text-primary);
-  margin-bottom: 5px;
   line-height: 1.25;
-  transition: color 0.2s;
+  margin-bottom: 4px;
 }
-.doctor-card:hover .doctor-name { color: #7dd3fc; }
 
-.doctor-role {
-  font-size: 0.78rem;
-  font-weight: 600;
+.doctor-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.doctor-sub {
+  margin-top: 4px;
+  font-size: 0.76rem;
   color: var(--text-secondary);
-  margin-bottom: 8px;
-}
-
-.doctor-creds {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 /* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .team-marquee-track { animation: none; overflow-x: auto; }
+  .doctor-card { margin-left: -32px; }
 }

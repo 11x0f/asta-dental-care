@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-top">
         <div className="footer-brand">
-          <div className="footer-logo">Elite <span>Dental</span> Studio</div>
+          <div className="footer-logo">Asta <span>Dental</span> Care</div>
           <p>Kerala's premier multi-specialty dental clinic. Exceptional care across Kochi, Calicut, and Kannur.</p>
         </div>
         <div className="footer-col">
