@@ -23,7 +23,7 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-badge">
           <span className="badge-dot" />
-          Trusted across Kerala · Est. 2018
+          Trusted by Thousands · Est. 2024
         </div>
 
         <div className="hero-headline">
@@ -37,7 +37,7 @@ export default function Hero() {
         </div>
 
         <p className="hero-sub">
-          World-class dental care across Kochi, Calicut &amp; Kannur.<br />
+          World-class dental care in the heart of Kannur.<br />
           We combine precision medicine with genuine compassion.
         </p>
 
@@ -62,10 +62,10 @@ export default function Hero() {
       <div className="circle-badge">
         <svg viewBox="0 0 120 120" className="circle-text-svg" aria-hidden="true">
           <path id="circlePath" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" fill="none" />
-          <text><textPath href="#circlePath" startOffset="0%">TRUSTED BY KERALA · SINCE 2018 · TRUSTED BY KERALA · SINCE 2018 ·</textPath></text>
+          <text><textPath href="#circlePath" startOffset="0%"> TRUSTED BY KANNUR   ·   SINCE 2024   ·   </textPath></text>
         </svg>
         <div className="circle-inner">
-          <span className="circle-num">8K+</span>
+          <span className="circle-num">3K+</span>
           <span className="circle-label">Happy<br/>Patients</span>
         </div>
       </div>

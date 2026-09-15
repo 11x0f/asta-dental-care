@@ -1,12 +1,11 @@
 /* ══════════════════════════════════════
-   TEAM — Infinite horizontal marquee
+   TEAM — Accordion gallery
    ══════════════════════════════════════ */
 
 .team {
   background: var(--bg-2);
   padding: 100px 0;
   position: relative;
-  overflow: hidden;
 }
 .team::before {
   content: '';
@@ -16,119 +15,10 @@
   background: linear-gradient(to right, transparent, rgba(56,189,248,0.25), transparent);
 }
 
-.team .section-header { padding: 0 5%; margin-bottom: 24px; }
+.team .section-header { padding: 0 5%; margin-bottom: 44px; }
 
-/* ── Marquee wrapper ── */
-.team-marquee-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.marquee-fade {
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 180px;
-  z-index: 2;
-  pointer-events: none;
-}
-.marquee-fade.left  { left: 0;  background: linear-gradient(to right, var(--fade-team), transparent); }
-.marquee-fade.right { right: 0; background: linear-gradient(to left,  var(--fade-team), transparent); }
-
-/* ── Scrolling track ── */
-.team-marquee-track {
-  display: flex;
-  padding: 44px 0 84px;
-  width: max-content;
-  animation: teamMarquee 34s linear infinite;
-}
-@keyframes teamMarquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ══════════════════════════════════════
-   DOCTOR CARD — coverflow poster
-   ══════════════════════════════════════ */
-.doctor-card {
-  flex-shrink: 0;
-  width: 300px;
-  aspect-ratio: 3 / 4;
-  margin-left: -72px;
-  position: relative;
-  border-radius: 30px;
-  overflow: hidden;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  transform-origin: center center;
-  will-change: transform, opacity, filter;
-  cursor: default;
-}
-.doctor-card:first-child {
-  margin-left: 0;
-}
-
-/* ── Avatar / placeholder photo ── */
-.doctor-avatar {
-  position: absolute;
-  inset: 0;
-  background: var(--bg-card);
-}
-.doctor-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
-}
-
-.doctor-card-vignette {
-  position: absolute;
-  inset: 0;
-  background: var(--card-overlay);
-  z-index: 1;
-}
-
-/* ── Label chip ── */
-.doctor-label {
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 16px;
-  z-index: 2;
-  padding: 15px 17px 17px;
-  border-radius: 20px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-
-.doctor-name {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.18rem;
-  color: var(--text-primary);
-  line-height: 1.25;
-  margin-bottom: 4px;
-}
-
-.doctor-title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.doctor-sub {
-  margin-top: 4px;
-  font-size: 0.76rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-/* Reduce motion */
-@media (prefers-reduced-motion: reduce) {
-  .team-marquee-track { animation: none; overflow-x: auto; }
-  .doctor-card { margin-left: -32px; }
+.team-gallery {
+  padding: 0 5%;
+  max-width: 1400px;
+  margin: 0 auto;
 }

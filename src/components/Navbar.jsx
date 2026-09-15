@@ -5,7 +5,7 @@ const links = [
   { label: 'Services',  id: 'services' },
   { label: 'About',     id: 'about' },
   { label: 'Team',      id: 'team' },
-  { label: 'Locations', id: 'locations' },
+  { label: 'Book Appointment', id: 'appointment' },
   { label: 'FAQ',       id: 'faq' },
 ];
 
@@ -36,6 +36,7 @@ export default function Navbar() {
     <>
       <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
         <a href="#home" className="nav-logo" onClick={() => scrollTo('home')}>
+          <img src="/logo.png" alt="" className="nav-logo-mark" />
           ASTA <span>Dental</span> CARE
         </a>
 

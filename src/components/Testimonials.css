@@ -12,18 +12,32 @@
   background: linear-gradient(to right, transparent, var(--sky-glow), transparent);
 }
 
+.testimonials-viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
 .testimonials-track {
   display: flex;
   gap: 20px;
-  overflow-x: auto;
-  padding-bottom: 16px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(56,189,248,0.3) transparent;
+  width: max-content;
+  animation: testimonials-scroll 40s linear infinite;
 }
-.testimonials-track::-webkit-scrollbar { height: 3px; }
-.testimonials-track::-webkit-scrollbar-track { background: transparent; }
-.testimonials-track::-webkit-scrollbar-thumb { background: rgba(56,189,248,0.3); border-radius: 3px; }
+.testimonials-viewport:hover .testimonials-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-track {
+    animation: none;
+    overflow-x: auto;
+  }
+}
+
+@keyframes testimonials-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
 .testi-card {
   background: var(--bg-card);
@@ -33,7 +47,6 @@
   min-width: 340px;
   max-width: 380px;
   flex-shrink: 0;
-  scroll-snap-align: start;
   transition: border-color 0.25s, transform 0.25s;
   position: relative;
 }

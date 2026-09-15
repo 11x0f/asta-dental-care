@@ -7,9 +7,9 @@ export default function Locations() {
     <section className="locations section" id="locations">
       <div className="section-header centered">
         <div className="section-eyebrow">Find Us</div>
-        <h2 className="section-title">A Clinic Near You</h2>
+        <h2 className="section-title">Visit Us</h2>
         <p className="section-sub">
-          Three convenient locations across Kerala — come in, we'll take it from there.
+          Come in, we'll take it from there.
         </p>
       </div>
       <div className="locations-grid">

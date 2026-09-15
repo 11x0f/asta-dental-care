@@ -3,8 +3,8 @@ import { services, team } from '../data';
 import './Appointment.css';
 
 const SLOT_DURATION = 30;
-const WORK_HOURS = { start: 9.5, end: 21 };
-const SUN_HOURS  = { start: 10,  end: 19 };
+const WORK_HOURS = { start: 9.5, end: 18.5 };
+const SUN_HOURS  = { start: 9.5, end: 14 };
 
 function generateSlots(date) {
   const isSunday = date.getDay() === 0;
@@ -36,8 +36,8 @@ function calendarDays(year, month) {
 }
 
 const apptFeatures = [
-  { icon: '🕐', text: 'Mon – Sat: 9:30 AM – 9:00 PM' },
-  { icon: '📅', text: 'Sunday: 10:00 AM – 7:00 PM' },
+  { icon: '🕐', text: 'Mon – Sat: 9:30 AM – 6:30 PM' },
+  { icon: '📅', text: 'Sunday: 9:30 AM – 2:00 PM' },
   { icon: '📞', text: '+91 87146 08881' },
   { icon: '✅', text: 'Free consultation & X-rays' },
 ];

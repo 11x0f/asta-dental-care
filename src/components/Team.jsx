@@ -1,92 +1,56 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { team } from '../data';
+import AccordionGallery from './AccordionGallery';
 import './Team.css';
 
-const PLACEHOLDER_PHOTO = '/Team/arurag_vinod_kumar.png';
+function initialsAvatar(initials, color) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+    <rect width="600" height="800" fill="${color}" />
+    <text x="300" y="440" font-family="Georgia, 'DM Serif Display', serif" font-size="220"
+      fill="#0b0b0f" text-anchor="middle">${initials}</text>
+  </svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+}
 
-const RANGE_MULT = 2.6;
-const MAX_SCALE = 1.18;
-const MIN_SCALE = 0.72;
-const MAX_DIM = 0.6;
-const MAX_DARKEN = 0.45;
+// Reorder so Dr. Anurag Vinod (Chief Dental Surgeon) sits in the centre panel.
+const centerName = 'Dr. Anurag Vinod';
+const centerDoc = team.find(d => d.name === centerName);
+const rest = team.filter(d => d.name !== centerName);
+const mid = Math.ceil(rest.length / 2);
+const orderedTeam = centerDoc
+  ? [...rest.slice(0, mid), centerDoc, ...rest.slice(mid)]
+  : team;
+const centerIndex = orderedTeam.findIndex(d => d.name === centerName);
+
+const items = orderedTeam.map(doc => ({
+  image: doc.photo || initialsAvatar(doc.initials, doc.color),
+  label: doc.name,
+  sublabel: doc.title,
+  alt: doc.name,
+}));
 
 export default function Team() {
-  const doubled = [...team, ...team];
-  const wrapperRef = useRef(null);
-  const cardRefs = useRef([]);
-  cardRefs.current = [];
-
-  const addCardRef = (el) => {
-    if (el) cardRefs.current.push(el);
-  };
-
-  useEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return;
-
-    let frameId;
-
-    const tick = () => {
-      const wrapper = wrapperRef.current;
-      if (wrapper) {
-        const wrapperRect = wrapper.getBoundingClientRect();
-        const centerX = wrapperRect.left + wrapperRect.width / 2;
-
-        cardRefs.current.forEach((card) => {
-          const rect = card.getBoundingClientRect();
-          const cardCenterX = rect.left + rect.width / 2;
-          const dist = Math.abs(cardCenterX - centerX);
-          const range = rect.width * RANGE_MULT || 1;
-          const t = Math.min(dist / range, 1);
-
-          const scale = MAX_SCALE - (MAX_SCALE - MIN_SCALE) * t;
-          const opacity = 1 - MAX_DIM * t;
-          const brightness = 1 - MAX_DARKEN * t;
-          const zIndex = Math.max(1, 1000 - Math.round(dist));
-
-          card.style.transform = `scale(${scale.toFixed(3)})`;
-          card.style.opacity = opacity.toFixed(3);
-          card.style.filter = `brightness(${brightness.toFixed(3)})`;
-          card.style.zIndex = zIndex;
-        });
-      }
-      frameId = requestAnimationFrame(tick);
-    };
-
-    frameId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frameId);
-  }, []);
-
   return (
     <section className="team" id="team">
       <div className="section-header centered">
         <div className="section-eyebrow">The Experts</div>
         <h2 className="section-title">Our Team of Specialists</h2>
-        <p className="section-sub">
-          Highly qualified professionals who bring warmth and precision to every appointment.
-        </p>
       </div>
 
-      <div className="team-marquee-wrapper" ref={wrapperRef}>
-        <div className="marquee-fade left" />
-        <div className="marquee-fade right" />
-
-        <div className="team-marquee-track">
-          {doubled.map((doc, i) => (
-            <div className="doctor-card" ref={addCardRef} key={i} aria-hidden={i >= team.length}>
-              <div className="doctor-avatar">
-                <img className="doctor-photo" src={PLACEHOLDER_PHOTO} alt={doc.name} draggable="false" />
-              </div>
-              <div className="doctor-card-vignette" />
-
-              <div className="doctor-label">
-                <h3 className="doctor-name">{doc.name}</h3>
-                <div className="doctor-title" style={{ color: doc.color }}>{doc.title}</div>
-                {doc.sub && <div className="doctor-sub">{doc.sub}</div>}
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="team-gallery">
+        <AccordionGallery
+          items={items}
+          defaultIndex={centerIndex >= 0 ? centerIndex : 0}
+          accentColor="#38bdf8"
+          overlayColor="#040d17"
+          textColor="#ffffff"
+          height={520}
+          gap={12}
+          radius={24}
+          expandRatio={0.46}
+          tilt={6}
+          parallax={0.4}
+        />
       </div>
     </section>
   );

@@ -13,27 +13,28 @@ export const services = [
 ];
 
 export const team = [
-  { name: 'Dr. Anurag Vinod', initials: 'AV', title: 'Pedodontist', sub: 'Chief Dental Surgeon · Root Canal Specialist', color: '#38bdf8' },
-  { name: 'Dr. Raymond Joseph Pereira', initials: 'RP', title: 'Oral Maxillofacial Surgeon', sub: 'Implantologist', color: '#c084fc' },
-  { name: 'Dr. Siddharth Kottian', initials: 'SK', title: 'Orthodontist', sub: 'Certified Invisalign Provider', color: '#2dd4bf' },
-  { name: 'Dr. Athira Rajeevan K', initials: 'AR', title: 'Orthodontist', sub: '', color: '#818cf8' },
-  { name: 'Dr. Mohammad PK', initials: 'MP', title: 'Biomimetic Dentist', sub: '', color: '#f472b6' },
-  { name: 'Dr. Sarun E', initials: 'SE', title: 'Periodontist', sub: '', color: '#fb923c' },
-  { name: 'Dr. Miran Abdul Khader', initials: 'MK', title: 'Resident Dental Surgeon', sub: '', color: '#facc15' },
+  { name: 'Dr. Anurag Vinod', initials: 'AV', title: 'Pedodontist', sub: 'Chief Dental Surgeon · Root Canal Specialist', color: '#38bdf8', photo: '/Team/arurag_vinod_kumar.png' },
+  { name: 'Dr. Raymond Joseph Pereira', initials: 'RP', title: 'Oral Maxillofacial Surgeon', sub: 'Implantologist', color: '#c084fc', photo: '/Team/Raymond_joseph_pereira.jfif' },
+  { name: 'Dr. Siddharth Kottian', initials: 'SK', title: 'Orthodontist', sub: 'Certified Invisalign Provider', color: '#2dd4bf', photo: '/Team/siddharth_kottian.jfif' },
+  { name: 'Dr. Athira Rajeevan K', initials: 'AR', title: 'Orthodontist', sub: '', color: '#818cf8', photo: '/Team/Athira_Rajeevan.jfif' },
+  { name: 'Dr. Mohammad PK', initials: 'MP', title: 'Biomimetic Dentist', sub: '', color: '#f472b6', photo: '/Team/mohammad_p_k.jfif' },
+  { name: 'Dr. Sarun E', initials: 'SE', title: 'Periodontist', sub: '', color: '#fb923c', photo: null },
+  { name: 'Dr. Miran Abdul Khader', initials: 'MK', title: 'Resident Dental Surgeon', sub: '', color: '#facc15', photo: '/Team/miran.jpeg' },
 ];
 
 export const testimonials = [
-  { name: 'Amitha K A', text: 'The doctors and staff exhibited remarkable professionalism. Their expertise and care instilled a sense of confidence in the treatment I received. Genuinely excellent.', stars: 5 },
-  { name: 'Gokul Nath D S', text: 'The doctors were very patient and spent a lot of time trying to comfort me. They take time to explain what needs to be done and provide valuable advice.', stars: 5 },
-  { name: 'Aleesha Fizal', text: 'Easily the best dental clinic I have been to. Dr. Elizabeth walked me through the entire process with such friendliness and care. I will definitely keep coming back.', stars: 5 },
-  { name: 'JUVAID BIN ZUBAIR', text: 'A premium clinic with affordable rates. Registration fee, consultation, and X-rays are free of cost. Great experience — highly recommended!', stars: 5 },
-  { name: 'Rajesh Katoch', text: 'Highly qualified and professional team. Proper hygiene and equipment. The front desk team managing appointments is highly appreciated.', stars: 5 },
+  { name: 'Lathika K. M', text: 'Nice and caring doctor. Very comfortable, less pain procedure. All behaves well ❤️', stars: 5 },
+  { name: 'Jishnu Valappol', text: 'Affordability and genuinity towards the patients make the clinic most recommendable. Really happy with the service.', stars: 5 },
+  { name: 'Jishna KP', text: 'I had good experience in this clinic. I have done my aligner treatment recently at this clinic. The clinic is well cleaned, and the equipment and services at the clinic is outstanding.', stars: 5 },
+  { name: 'Rithuvaren M K', text: 'I recently visited this dental clinic due to its convenient location near my home in India, and I was truly impressed by the exceptional service.', stars: 5 },
+  { name: 'Amith Prakash', text: 'Consulted Doc. Anurag regarding tooth refilling. Walked me through entire process before the procedure began.', stars: 5 },
+  { name: 'Rajab Risavu', text: 'The best medicine is to treat children by talking to them in nice manner, laughing and playing ❤️❤️', stars: 5 },
+  { name: 'Sruthi Ponnu', text: 'Is a very good doctor. Their treatment is very good.', stars: 5 },
+  { name: 'Prayag Prakashan', text: 'Good service... best in the town.', stars: 5 },
 ];
 
 export const locations = [
-  { icon: '🏙️', name: 'Kochi', address: '5/981 A, Main Avenue Road, Panampilly Nagar, Kochi, Kerala – 682036', map: 'https://maps.app.goo.gl/DGoTZh4s7pgX7Tf79' },
-  { icon: '🌴', name: 'Kozhikode (Calicut)', address: 'First Floor, Nechikkadan Tower, Mini Bypass Rd, Eranhipaalam, Kozhikode, Kerala 673006', map: 'https://maps.app.goo.gl/5Pa7RAgLDpkLFAJn6' },
-  { icon: '🏔️', name: 'Kannur', address: 'Nyma Tower, opposite Koyili Hospital, Talap, Kannur, Kerala 670002', map: 'https://maps.app.goo.gl/KZLcS8vEWui7Evsq9' },
+  { icon: '🏔️', name: 'Kannur', address: 'Asta Dental Care, Grand Icon Building, near Mappila LP School, Chalad, Kannur, Kerala 670014', map: 'https://www.google.com/maps/place/Asta+Dental+Care+Kannur/@11.8814719,75.3516131,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba43ba06dac828d:0xbbe10353809b1dbd!8m2!3d11.8814719!4d75.354188!16s%2Fg%2F11w92d9126' },
 ];
 
 export const whyUs = [
@@ -45,7 +46,7 @@ export const whyUs = [
 
 export const faqs = [
   { q: 'How can I book an appointment?', a: 'You can call our reception during working hours or fill out the appointment form on this page. Our staff will confirm your preferred date and time promptly.' },
-  { q: 'What are your clinic timings?', a: 'We are open Monday to Saturday, 9:30 AM – 9:00 PM, and Sundays 10:00 AM – 7:00 PM, to fit around your busy schedule.' },
+  { q: 'What are your clinic timings?', a: 'We are open Monday to Saturday, 9:30 AM – 6:30 PM, and Sundays 9:30 AM – 2:00 PM, to fit around your busy schedule.' },
   { q: 'What payment methods do you accept?', a: 'We accept credit cards, debit cards, cash, and all major digital payment methods for a seamless experience.' },
   { q: 'Should I arrive early for my first visit?', a: 'Yes — arriving 10–15 minutes early helps us complete paperwork and ensures your appointment starts on time without any rush.' },
   { q: 'Are consultation and X-rays free?', a: 'Yes! Registration, initial consultation, and X-rays are complimentary. We believe in transparent, affordable care from the very first visit.' },
@@ -53,6 +54,6 @@ export const faqs = [
 
 export const stats = [
   { num: '2800+', label: 'Dental Fillings' },
-  { num: '3K+',   label: 'Root Canals' },
-  { num: '2100+', label: 'Implants' },
+  { num: '2K+',   label: 'Root Canals' },
+  { num: '100+', label: 'Implants' },
 ];
