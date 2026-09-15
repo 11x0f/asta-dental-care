@@ -74,6 +74,11 @@
 @media (max-width: 480px) {
   .footer-visit .footer-info-list { grid-template-columns: 1fr; }
 }
+@media (max-width: 640px) {
+  .footer { padding: 36px 6% 20px; }
+  .footer-top { gap: 32px; margin-bottom: 24px; }
+  .footer-bottom { text-align: center; }
+}
 
 .footer-info-row {
   display: flex; align-items: flex-start; gap: 10px;

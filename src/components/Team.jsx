@@ -27,6 +27,7 @@ const items = orderedTeam.map(doc => ({
   label: doc.name,
   sublabel: doc.title,
   alt: doc.name,
+  focus: doc.focus,
 }));
 
 export default function Team() {

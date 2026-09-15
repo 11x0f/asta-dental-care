@@ -144,3 +144,17 @@
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; overflow-x: auto; }
 }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .services { padding: 72px 0; }
+}
+@media (max-width: 640px) {
+  .marquee-fade { width: 60px; }
+  .service-card { width: 220px; }
+  .card-visual { height: 130px; }
+}
+@media (max-width: 400px) {
+  .marquee-fade { width: 32px; }
+  .service-card { width: 200px; }
+}

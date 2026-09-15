@@ -83,3 +83,14 @@
   font-size: 0.85rem;
   color: var(--sky-dim);
 }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .testimonials { padding: 72px 5%; }
+}
+@media (max-width: 640px) {
+  .testi-card { min-width: 82vw; max-width: 82vw; padding: 24px; }
+}
+@media (max-width: 400px) {
+  .testi-card { min-width: 88vw; max-width: 88vw; padding: 20px; }
+}

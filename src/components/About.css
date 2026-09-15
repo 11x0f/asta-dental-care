@@ -113,3 +113,15 @@
   .about-content { opacity: 1; transform: none; }
   .about-image-label { display: none; }
 }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .about { height: 280vh; }
+}
+@media (max-width: 600px) {
+  .about { height: 320vh; }
+  .about-content { padding: 0 6%; }
+  .about-features { margin-top: 22px; gap: 10px; }
+  .about-features li { font-size: 0.82rem; gap: 10px; }
+  .about-image-label { letter-spacing: 0.05em; }
+}

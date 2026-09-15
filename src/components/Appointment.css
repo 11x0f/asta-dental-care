@@ -197,3 +197,9 @@
   .time-slots { display:grid; grid-template-columns:repeat(3,1fr); max-height:none; }
   .booking-card { padding:22px 18px; }
 }
+@media (max-width:420px) {
+  .appointment { padding: 72px 5%; }
+  .time-slots { grid-template-columns:repeat(2,1fr); }
+  .form-grid { gap:12px; }
+  .booking-card { padding:18px 14px; }
+}

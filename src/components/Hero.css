@@ -26,6 +26,18 @@
   to   { background-size: 100% auto; background-position: center 55%; }
 }
 
+@media (max-width: 700px) {
+  .hero-bg {
+    background-image: url('../../public/asta_dental_hero_potrait.png');
+    background-size: cover;
+    background-position: center top;
+  }
+  @keyframes heroZoom {
+    from { background-size: 112% auto; background-position: center top; }
+    to   { background-size: 100% auto; background-position: center top; }
+  }
+}
+
 
 /* Dark gradient from bottom-left — keeps text readable */
 .hero-overlay-gradient {
@@ -335,8 +347,14 @@
 }
 @media (max-width: 600px) {
   .hero-content { padding: 0 5% 64px; }
-  .row-1 { gap: 10px; }
+  .row-1 { gap: 10px; font-size: clamp(2.4rem, 9vw, 4rem); }
+  .row-2 { font-size: clamp(2rem, 8.5vw, 3.6rem); }
   .hero-chips { display: none; }
   .circle-badge { top: 80px; right: 5%; }
   .hero-stats { gap: 18px; flex-wrap: wrap; }
+  .hero-cta-row { gap: 10px; }
+  .cta-primary, .cta-ghost { padding: 13px 22px; font-size: 0.82rem; }
+}
+@media (max-width: 380px) {
+  .circle-badge { display: none; }
 }

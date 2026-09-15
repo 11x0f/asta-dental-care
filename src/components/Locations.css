@@ -73,3 +73,9 @@
   transition: gap 0.2s;
 }
 .location-link:hover { gap: 10px; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .locations-grid { grid-template-columns: 1fr; }
+  .location-card { padding: 28px 22px; }
+}

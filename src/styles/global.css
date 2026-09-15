@@ -91,6 +91,7 @@ body {
   background: var(--bg-base);
   -webkit-font-smoothing: antialiased;
   transition: background 0.35s ease, color 0.35s ease;
+  overflow-x: hidden;
 }
 
 h1, h2, h3 { font-family: 'DM Serif Display', serif; }
@@ -136,6 +137,16 @@ h1, h2, h3 { font-family: 'DM Serif Display', serif; }
 .section-header.centered { text-align: center; }
 .section-header.centered .section-eyebrow { justify-content: center; }
 .section-header.centered .section-sub { margin: 0 auto; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .section { padding: 72px 5%; }
+  .section-header { margin-bottom: 40px; }
+}
+@media (max-width: 600px) {
+  .section { padding: 56px 6%; }
+  .section-sub { font-size: 0.92rem; }
+}
 
 /* ── Extra theme tokens ── */
 [data-theme="dark"] {

@@ -47,7 +47,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© 2025 Asta Dental Care. All rights reserved.</span>
+        <span>© 2026 Asta Dental Care. All rights reserved.</span>
       </div>
     </footer>
   );
