@@ -1,6 +1,8 @@
 .testimonials {
-  background: var(--bg-1);
-  padding: 100px 5%;
+  background:
+    linear-gradient(var(--section-img-scrim), var(--section-img-scrim)),
+    url('../../public/testimonials-bg.png') center / cover no-repeat var(--bg-1);
+  padding: 100px 5% 32px;
   position: relative;
   overflow: hidden;
 }
@@ -62,7 +64,6 @@
 }
 .testi-card:hover {
   border-color: var(--border-hover);
-  transform: translateY(-3px);
 }
 
 .testi-stars {
@@ -86,7 +87,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .testimonials { padding: 72px 5%; }
+  .testimonials { padding: 72px 5% 24px; }
 }
 @media (max-width: 640px) {
   .testi-card { min-width: 82vw; max-width: 82vw; padding: 24px; }

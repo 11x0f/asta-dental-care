@@ -5,7 +5,7 @@ import './Testimonials.css';
 export default function Testimonials() {
   return (
     <section className="testimonials">
-      <div className="section-header">
+      <div className="section-header centered">
         <div className="section-eyebrow">Patient Stories</div>
         <h2 className="section-title">What our patients say</h2>
       </div>

@@ -16,8 +16,11 @@
   -webkit-backdrop-filter: none;
   border-bottom: none;
   box-shadow: none;
-  transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
+  transform: translateY(0);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), background 0.35s ease,
+              box-shadow 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
 }
+.nav.hidden { transform: translateY(-100%); }
 .nav.scrolled {
   background: var(--nav-bg-scroll);
   backdrop-filter: blur(16px) saturate(1.4);
@@ -90,59 +93,6 @@
   flex-shrink: 0;
 }
 
-/* ── Theme toggle ── */
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-.toggle-track {
-  width: 48px; height: 26px;
-  border-radius: 100px;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.2);
-  position: relative;
-  transition: background 0.3s, border-color 0.3s;
-  display: flex;
-  align-items: center;
-  padding: 3px;
-}
-.toggle-track.dark {
-  background: rgba(56,189,248,0.2);
-  border-color: rgba(56,189,248,0.4);
-}
-
-/* Light theme track */
-[data-theme="light"] .toggle-track {
-  background: rgba(0,0,0,0.08);
-  border-color: rgba(0,0,0,0.15);
-}
-[data-theme="light"] .toggle-track.dark {
-  background: rgba(2,132,199,0.15);
-  border-color: rgba(2,132,199,0.3);
-}
-
-.toggle-thumb {
-  width: 20px; height: 20px;
-  border-radius: 50%;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #0369a1;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s;
-  transform: translateX(0);
-}
-.toggle-track.dark .toggle-thumb {
-  transform: translateX(22px);
-  background: #0c1a2e;
-  color: #38bdf8;
-}
-
 /* ── CTA ── */
 .nav-cta {
   background: var(--sky);
@@ -198,7 +148,7 @@
   background: var(--drawer-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: none;
   padding: 0 5%;
   max-height: 0;
   overflow: hidden;
@@ -207,6 +157,7 @@
 .mobile-drawer.open {
   max-height: 480px;
   padding: 24px 5% 32px;
+  border-bottom: 1px solid var(--border);
 }
 .mobile-drawer ul {
   list-style: none;

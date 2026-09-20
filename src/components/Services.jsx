@@ -40,16 +40,13 @@ export default function Services() {
             const v = serviceVisuals[s.title] || { gradient: 'linear-gradient(135deg, #0c1a2e, #1e3a5f)', icon: '🦷', color: '#38bdf8' };
             return (
               <div className="service-card" key={i} aria-hidden={i >= services.length}>
-                {/* Visual top */}
-                <div className="card-visual">
-                  <img src={v.image} alt={s.title} className="card-visual-img" />
-                  <div className="card-visual-overlay" style={{ background: `linear-gradient(to top, #060e1c 0%, rgba(6,14,28,0.3) 60%, transparent 100%)` }} />
-                  <div className="card-visual-glow" style={{ background: v.color }} />
-                </div>
+                <img src={v.image} alt={s.title} className="card-bg-img" />
+                <div className="card-scrim" />
+                <div className="card-visual-glow" style={{ background: v.color }} />
 
-                {/* Content */}
-                <div className="card-body">
-                  <div className="card-tag" style={{ color: v.color, background: `${v.color}15`, borderColor: `${v.color}30` }}>
+                {/* Content sits directly on the image */}
+                <div className="card-content">
+                  <div className="card-tag" style={{ color: v.color, background: `${v.color}20`, borderColor: `${v.color}40` }}>
                     Specialty
                   </div>
                   <h3 className="card-title">{s.title}</h3>

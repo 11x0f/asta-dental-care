@@ -22,8 +22,8 @@ export default function App() {
       <Team />
       <About />
       <WhyUs />
-      <Testimonials />
       <Appointment />
+      <Testimonials />
       <FAQ />
       <Footer />
     </>

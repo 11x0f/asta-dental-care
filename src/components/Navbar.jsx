@@ -11,17 +11,21 @@ const links = [
 
 export default function Navbar() {
   const [scrolled,  setScrolled]  = useState(false);
+  const [hidden,    setHidden]    = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
   const [active,    setActive]    = useState('');
-  const [dark,      setDark]      = useState(false);
-
-  // Apply theme to <html> so all CSS vars cascade
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-  }, [dark]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = Math.max(window.scrollY, 0);
+      setScrolled(y > 40);
+      // Ignore tiny jitters so the bar doesn't flicker mid-scroll
+      if (Math.abs(y - lastY) > 6) {
+        setHidden(y > lastY && y > 120);
+        lastY = y;
+      }
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -34,7 +38,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
+      <nav className={`nav${scrolled ? ' scrolled' : ''}${hidden && !menuOpen ? ' hidden' : ''}`}>
         <a href="#home" className="nav-logo" onClick={() => scrollTo('home')}>
           <img src="/logo.png" alt="" className="nav-logo-mark" />
           ASTA <span>Dental</span> CARE
@@ -55,38 +59,6 @@ export default function Navbar() {
         </ul>
 
         <div className="nav-right">
-          {/* Theme toggle */}
-          <button
-            className="theme-toggle"
-            onClick={() => setDark(d => !d)}
-            aria-label="Toggle theme"
-            title={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            <div className={`toggle-track${dark ? ' dark' : ''}`}>
-              <div className="toggle-thumb">
-                {dark ? (
-                  // Moon
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                  </svg>
-                ) : (
-                  // Sun
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                    <circle cx="12" cy="12" r="5"/>
-                    <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                )}
-              </div>
-            </div>
-          </button>
-
           <button className="nav-cta" onClick={() => scrollTo('appointment')}>
             Book Appointment
           </button>

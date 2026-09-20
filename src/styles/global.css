@@ -33,8 +33,11 @@
   --glow:           0 0 40px rgba(56,189,248,0.12);
 
   /* Marquee fade colors */
-  --fade-services: #060e1c;
+  --fade-services: rgba(6,14,28,0.92);
   --fade-team:     #091526;
+
+  /* Scrim over section background image (services / appointment) */
+  --section-img-scrim: rgba(6,14,28,0.88);
 
   /* Nav */
   --nav-bg:         rgba(4,12,24,0.15);
@@ -74,8 +77,10 @@
   --shadow:         0 8px 40px rgba(0,0,0,0.08);
   --glow:           0 0 40px rgba(2,132,199,0.08);
 
-  --fade-services:  #ffffff;
+  --fade-services:  rgba(255,255,255,0.92);
   --fade-team:      #f8fbff;
+
+  --section-img-scrim: rgba(255,255,255,0.62);
 
   --nav-bg:         rgba(255,255,255,0.7);
   --nav-bg-scroll:  rgba(255,255,255,0.92);

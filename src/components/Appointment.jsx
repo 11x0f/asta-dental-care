@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { services, team } from '../data';
+import {
+  apptIconMap, CalendarIcon, ClockIcon, SuccessIcon,
+  ChevronLeftIcon, ChevronRightIcon, ArrowLeftIcon, ArrowRightIcon
+} from './ApptIcons';
 import './Appointment.css';
 
 const SLOT_DURATION = 30;
@@ -36,10 +40,10 @@ function calendarDays(year, month) {
 }
 
 const apptFeatures = [
-  { icon: '🕐', text: 'Mon – Sat: 9:30 AM – 6:30 PM' },
-  { icon: '📅', text: 'Sunday: 9:30 AM – 2:00 PM' },
-  { icon: '📞', text: '+91 87146 08881' },
-  { icon: '✅', text: 'Free consultation & X-rays' },
+  { icon: 'clock', accent: '#38bdf8', text: 'Mon – Sat: 9:30 AM – 6:30 PM' },
+  { icon: 'calendar', accent: '#818cf8', text: 'Sunday: 9:30 AM – 2:00 PM' },
+  { icon: 'phone', accent: '#f472b6', text: '+91 87146 08881' },
+  { icon: 'check', accent: '#22c55e', text: 'Free consultation & X-rays' },
 ];
 
 export default function Appointment() {
@@ -105,19 +109,24 @@ export default function Appointment() {
             Free consultation, X-rays, and registration. Pick a date and time that works for you.
           </p>
           <div className="appt-features">
-            {apptFeatures.map(f => (
-              <div key={f.text} className="appt-feature">
-                <div className="appt-feature-icon">{f.icon}</div>
-                {f.text}
-              </div>
-            ))}
+            {apptFeatures.map(f => {
+              const Icon = apptIconMap[f.icon];
+              return (
+                <div key={f.text} className="appt-feature">
+                  <div className="appt-feature-icon" style={{ '--accent': f.accent }}>
+                    <Icon />
+                  </div>
+                  {f.text}
+                </div>
+              );
+            })}
           </div>
           {selDate && (
             <div className="appt-selection">
               <div className="appt-sel-row">
-                📅 {selDate.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' })}
+                <CalendarIcon /> {selDate.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' })}
               </div>
-              {selSlot && <div className="appt-sel-row">🕐 {displaySlot(selSlot)}</div>}
+              {selSlot && <div className="appt-sel-row"><ClockIcon /> {displaySlot(selSlot)}</div>}
             </div>
           )}
         </div>
@@ -133,11 +142,15 @@ export default function Appointment() {
                 {/* Calendar */}
                 <div className="cal-panel">
                   <div className="cal-nav">
-                    <button className="cal-nav-btn" onClick={prevMonth}>‹</button>
+                    <button className="cal-nav-btn" onClick={prevMonth} aria-label="Previous month">
+                      <ChevronLeftIcon />
+                    </button>
                     <span className="cal-month">
                       <strong>{MONTHS[viewMonth]}</strong> {viewYear}
                     </span>
-                    <button className="cal-nav-btn" onClick={nextMonth}>›</button>
+                    <button className="cal-nav-btn" onClick={nextMonth} aria-label="Next month">
+                      <ChevronRightIcon />
+                    </button>
                   </div>
                   <div className="cal-grid">
                     {DAYS.map(d => <div key={d} className="cal-dow">{d}</div>)}
@@ -201,11 +214,20 @@ export default function Appointment() {
           {/* Step 3: Details */}
           {step === 'details' && (
             <div className="booking-card">
-              <button className="back-btn" onClick={() => setStep('time')}>← Back</button>
-              <p className="details-sub">
-                📅 {selDate?.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' })}
-                &nbsp;·&nbsp; 🕐 {displaySlot(selSlot)}
-              </p>
+              <button className="back-btn" onClick={() => setStep('time')}>
+                <ArrowLeftIcon /> Back
+              </button>
+              <div className="details-sub">
+                <span className="details-chip">
+                  <CalendarIcon />
+                  {selDate?.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' })}
+                </span>
+                <span className="details-dot" />
+                <span className="details-chip">
+                  <ClockIcon />
+                  {displaySlot(selSlot)}
+                </span>
+              </div>
               <form onSubmit={handleSubmit}>
                 <div className="form-grid">
                   <div className="form-group">
@@ -235,8 +257,10 @@ export default function Appointment() {
                     <textarea name="message" rows={3} placeholder="Tell us about your concern..." value={formData.message} onChange={handleChange} />
                   </div>
                 </div>
-                <button type="submit" className="form-submit">Confirm Appointment →</button>
-                <p className="form-disclaimer">By submitting, you agree to be contacted by Elite Dental Studio via phone or WhatsApp.</p>
+                <button type="submit" className="form-submit">
+                  Confirm Appointment <ArrowRightIcon />
+                </button>
+                <p className="form-disclaimer">By submitting, you agree to be contacted by Asta Dental Care via phone or WhatsApp.</p>
               </form>
             </div>
           )}
@@ -244,7 +268,7 @@ export default function Appointment() {
           {/* Step 4: Confirmed */}
           {step === 'confirmed' && (
             <div className="booking-card appt-success">
-              <div className="success-icon">✅</div>
+              <SuccessIcon className="success-icon" />
               <div className="success-title">Appointment Requested!</div>
               <div className="success-sub">
                 {selDate?.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' })} at {displaySlot(selSlot)}
