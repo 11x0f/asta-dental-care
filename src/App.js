@@ -8,7 +8,6 @@ import About        from './components/About';
 import WhyUs        from './components/WhyUs';
 import Team         from './components/Team';
 import Testimonials from './components/Testimonials';
-import Locations    from './components/Locations';
 import Appointment  from './components/Appointment';
 import FAQ          from './components/FAQ';
 import Footer       from './components/Footer';
