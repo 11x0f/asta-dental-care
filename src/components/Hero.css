@@ -19,7 +19,7 @@
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: #03080f url('../../public/hero-bg.png') center 100% / 100% auto no-repeat;
+  background: #03080f url('../../public/hero-bg.webp') center 100% / 100% auto no-repeat;
   animation: heroZoom 12s ease-out forwards;
 }
 @keyframes heroZoom {
@@ -29,7 +29,7 @@
 
 @media (max-width: 700px) {
   .hero-bg {
-    background-image: url('../../public/asta_dental_hero_potrait.png');
+    background-image: url('../../public/asta_dental_hero_potrait.webp');
     background-size: cover;
     background-position: center top;
   }

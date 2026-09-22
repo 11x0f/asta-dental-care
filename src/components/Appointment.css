@@ -1,7 +1,7 @@
 .appointment {
   background:
     linear-gradient(var(--section-img-scrim), var(--section-img-scrim)),
-    url('../../public/section-bg.png') center / cover no-repeat var(--bg-1);
+    url('../../public/section-bg.webp') center / cover no-repeat var(--bg-1);
   padding: 100px 5%;
   position: relative;
   overflow: hidden;

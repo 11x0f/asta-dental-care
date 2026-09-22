@@ -6,18 +6,18 @@ import './WhyUs.css';
 const rotations = [-7, 5, -4, 8, -6, 3, -3, 6, -8, 4, -5, 7];
 
 const wallImages = [
-  { src: '/why-wall/1.png', alt: 'Illustration of a dentist examining a patient' },
-  { src: '/why-wall/2.png', alt: 'Illustration of a dental probe near a tooth' },
-  { src: '/why-wall/3.png', alt: 'Illustration of a patient in a dental chair' },
-  { src: '/why-wall/4.png', alt: 'Illustration of a bright healthy smile' },
-  { src: '/why-wall/5.png', alt: 'Illustration of dental instruments on a tray' },
-  { src: '/why-wall/6.png', alt: 'Illustration of an electric toothbrush cleaning a tooth' },
-  { src: '/why-wall/7.png', alt: 'Illustration of a dental X-ray lightbox' },
-  { src: '/why-wall/8.png', alt: 'Illustration of a dentist with a child patient' },
-  { src: '/why-wall/9.png', alt: 'Illustration of a clear aligner on teeth' },
-  { src: '/why-wall/10.png', alt: 'Illustration of a dental clinic reception area' },
-  { src: '/why-wall/11.png', alt: 'Illustration of a tooth mascot with a shield' },
-  { src: '/why-wall/12.png', alt: 'Illustration of toothpaste and dental floss' }
+  { src: '/why-wall/1.webp', alt: 'Illustration of a dentist examining a patient' },
+  { src: '/why-wall/2.webp', alt: 'Illustration of a dental probe near a tooth' },
+  { src: '/why-wall/3.webp', alt: 'Illustration of a patient in a dental chair' },
+  { src: '/why-wall/4.webp', alt: 'Illustration of a bright healthy smile' },
+  { src: '/why-wall/5.webp', alt: 'Illustration of dental instruments on a tray' },
+  { src: '/why-wall/6.webp', alt: 'Illustration of an electric toothbrush cleaning a tooth' },
+  { src: '/why-wall/7.webp', alt: 'Illustration of a dental X-ray lightbox' },
+  { src: '/why-wall/8.webp', alt: 'Illustration of a dentist with a child patient' },
+  { src: '/why-wall/9.webp', alt: 'Illustration of a clear aligner on teeth' },
+  { src: '/why-wall/10.webp', alt: 'Illustration of a dental clinic reception area' },
+  { src: '/why-wall/11.webp', alt: 'Illustration of a tooth mascot with a shield' },
+  { src: '/why-wall/12.webp', alt: 'Illustration of toothpaste and dental floss' }
 ];
 
 const WALL_TILES = 24;

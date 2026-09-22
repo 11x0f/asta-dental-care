@@ -13,13 +13,13 @@ export const services = [
 ];
 
 export const team = [
-  { name: 'Dr. Anurag Vinod', initials: 'AV', title: 'Pedodontist', sub: 'Chief Dental Surgeon · Root Canal Specialist', color: '#38bdf8', photo: '/Team/arurag_vinod_kumar.png', focus: 'center 8%' },
-  { name: 'Dr. Raymond Joseph Pereira', initials: 'RP', title: 'Oral Maxillofacial Surgeon', sub: 'Implantologist', color: '#c084fc', photo: '/Team/Raymond_joseph_pereira.jfif', focus: 'center 8%' },
-  { name: 'Dr. Siddharth Kottian', initials: 'SK', title: 'Orthodontist', sub: 'Certified Invisalign Provider', color: '#2dd4bf', photo: '/Team/siddharth_kottian.jfif', focus: 'center 8%' },
-  { name: 'Dr. Athira Rajeevan K', initials: 'AR', title: 'Orthodontist', sub: '', color: '#818cf8', photo: '/Team/Athira_Rajeevan.jfif' },
-  { name: 'Dr. Mohammad PK', initials: 'MP', title: 'Biomimetic Dentist', sub: '', color: '#f472b6', photo: '/Team/mohammad_p_k.jfif', focus: 'center 8%' },
+  { name: 'Dr. Anurag Vinod', initials: 'AV', title: 'Pedodontist', sub: 'Chief Dental Surgeon · Root Canal Specialist', color: '#38bdf8', photo: '/Team/arurag_vinod_kumar.webp', focus: 'center 8%' },
+  { name: 'Dr. Raymond Joseph Pereira', initials: 'RP', title: 'Oral Maxillofacial Surgeon', sub: 'Implantologist', color: '#c084fc', photo: '/Team/Raymond_joseph_pereira.webp', focus: 'center 8%' },
+  { name: 'Dr. Siddharth Kottian', initials: 'SK', title: 'Orthodontist', sub: 'Certified Invisalign Provider', color: '#2dd4bf', photo: '/Team/siddharth_kottian.webp', focus: 'center 8%' },
+  { name: 'Dr. Athira Rajeevan K', initials: 'AR', title: 'Orthodontist', sub: '', color: '#818cf8', photo: '/Team/Athira_Rajeevan.webp' },
+  { name: 'Dr. Mohammad PK', initials: 'MP', title: 'Biomimetic Dentist', sub: '', color: '#f472b6', photo: '/Team/mohammad_p_k.webp', focus: 'center 8%' },
   { name: 'Dr. Sarun E', initials: 'SE', title: 'Periodontist', sub: '', color: '#fb923c', photo: null },
-  { name: 'Dr. Miran Abdul Khader', initials: 'MK', title: 'Resident Dental Surgeon', sub: '', color: '#facc15', photo: '/Team/miran.jpeg', focus: 'center 8%' },
+  { name: 'Dr. Miran Abdul Khader', initials: 'MK', title: 'Resident Dental Surgeon', sub: '', color: '#facc15', photo: '/Team/miran.webp', focus: 'center 8%' },
 ];
 
 export const testimonials = [
@@ -49,28 +49,28 @@ export const whyUs = [
     accent: '#38bdf8',
     title: 'Comprehensive Expertise',
     desc: 'Multi-speciality team covering every branch of dentistry.',
-    image: '/why-wall/why-card-1.png'
+    image: '/why-wall/why-card-1.webp'
   },
   {
     icon: 'heart',
     accent: '#f472b6',
     title: 'Patient-Centric Approach',
     desc: 'Your comfort and confidence guide every decision we make.',
-    image: '/why-wall/why-card-2.png'
+    image: '/why-wall/why-card-2.webp'
   },
   {
     icon: 'scan',
     accent: '#38bdf8',
     title: 'Cutting-Edge Technology',
     desc: 'Laser dentistry, digital imaging, and modern materials.',
-    image: '/why-wall/why-card-3.png'
+    image: '/why-wall/why-card-3.webp'
   },
   {
     icon: 'leaf',
     accent: '#22c55e',
     title: 'Holistic Well-being',
     desc: 'We treat the whole person, not just the tooth.',
-    image: '/why-wall/why-card-4.png'
+    image: '/why-wall/why-card-4.webp'
   },
 ];
 

@@ -1,7 +1,7 @@
 .faq {
   background:
     linear-gradient(var(--section-img-scrim), var(--section-img-scrim)),
-    url('../../public/faq-bg.png') center / cover no-repeat var(--bg-1);
+    url('../../public/faq-bg.webp') center / cover no-repeat var(--bg-1);
   position: relative;
   padding-top: 32px;
 }

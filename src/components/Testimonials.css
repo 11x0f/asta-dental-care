@@ -1,7 +1,7 @@
 .testimonials {
   background:
     linear-gradient(var(--section-img-scrim), var(--section-img-scrim)),
-    url('../../public/testimonials-bg.png') center / cover no-repeat var(--bg-1);
+    url('../../public/testimonials-bg.webp') center / cover no-repeat var(--bg-1);
   padding: 100px 5% 32px;
   position: relative;
   overflow: hidden;

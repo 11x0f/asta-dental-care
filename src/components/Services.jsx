@@ -3,17 +3,17 @@ import { services } from '../data';
 import './Services.css';
 
 const serviceVisuals = {
-  'Laser Dentistry':      { image: '/services/laser.png',         color: '#38bdf8' },
-  'Cosmetic Treatments':  { image: '/services/cosmetic.png',      color: '#c084fc' },
-  'Maxillofacial Surgery':{ image: '/services/maxillofacial.png', color: '#60a5fa' },
-  'Invisalign':           { image: '/services/invisalign.png',    color: '#2dd4bf' },
-  'Periodontics':         { image: '/services/periodontics.png',  color: '#fb923c' },
-  'Paediatric Dentistry': { image: '/services/paediatric.png',    color: '#f472b6' },
-  'Oral Radiology':       { image: '/services/radiology.png',     color: '#818cf8' },
-  'Endodontics':          { image: '/services/endodontics.png',   color: '#a8a29e' },
-  'Prosthodontics':       { image: '/services/prosthodontics.png',color: '#22d3ee' },
-  'Orthodontics':         { image: '/services/orthodontics.png',  color: '#4ade80' },
-  'Restorative Dentistry':{ image: '/services/restorative.png',   color: '#f87171' },
+  'Laser Dentistry':      { image: '/services/laser.webp',         color: '#38bdf8' },
+  'Cosmetic Treatments':  { image: '/services/cosmetic.webp',      color: '#c084fc' },
+  'Maxillofacial Surgery':{ image: '/services/maxillofacial.webp', color: '#60a5fa' },
+  'Invisalign':           { image: '/services/invisalign.webp',    color: '#2dd4bf' },
+  'Periodontics':         { image: '/services/periodontics.webp',  color: '#fb923c' },
+  'Paediatric Dentistry': { image: '/services/paediatric.webp',    color: '#f472b6' },
+  'Oral Radiology':       { image: '/services/radiology.webp',     color: '#818cf8' },
+  'Endodontics':          { image: '/services/endodontics.webp',   color: '#a8a29e' },
+  'Prosthodontics':       { image: '/services/prosthodontics.webp',color: '#22d3ee' },
+  'Orthodontics':         { image: '/services/orthodontics.webp',  color: '#4ade80' },
+  'Restorative Dentistry':{ image: '/services/restorative.webp',   color: '#f87171' },
 };
 
 export default function Services() {

@@ -65,7 +65,7 @@ export default function About() {
     <section className="about" id="about" ref={sectionRef}>
       <div className="about-sticky">
         <div className="about-image-shell" ref={shellRef}>
-          <img className="about-bg-image" src="/about_us_bg_light_theme.png" alt="" draggable="false" />
+          <img className="about-bg-image" src="/about_us_bg_light_theme.webp" alt="" draggable="false" />
           <div className="about-image-overlay" ref={overlayRef} />
           <div className="about-image-label" ref={labelRef}>About Us</div>
         </div>

@@ -45,7 +45,7 @@ export default function Footer() {
       <div className="footer-top">
         <div className="footer-brand">
           <div className="footer-logo">
-            <img src="/logo.png" alt="" className="footer-logo-mark" />
+            <img src="/logo.webp" alt="" className="footer-logo-mark" />
             Asta <span>Dental</span> Care
           </div>
           <p>Kerala's premier multi-specialty dental clinic, offering exceptional care in Kannur.</p>
