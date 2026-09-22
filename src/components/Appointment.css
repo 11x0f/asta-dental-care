@@ -47,20 +47,11 @@
 }
 .appt-feature-icon svg { width:19px; height:19px; }
 
-.appt-selection {
-  margin-top:32px; padding:20px 22px;
-  background: var(--sky-glow);
-  border: 1px solid var(--border-hover);
-  border-radius:14px;
-  display:flex; flex-direction:column; gap:8px;
-}
-.appt-sel-row { display:flex; align-items:center; gap:8px; font-size:0.875rem; color:var(--sky-dim); font-weight:600; }
-.appt-sel-row svg { width:16px; height:16px; flex-shrink:0; }
-
 /* ── Glass booking card ── */
 .booking-card {
   background: var(--glass-card-bg);
   border: 1px solid var(--glass-border-lg);
+  --card-pad: 32px;
   border-radius:24px; padding:32px;
   max-width: 560px;
   backdrop-filter: blur(24px);
@@ -86,7 +77,8 @@
   transition:all 0.2s;
 }
 .cal-nav-btn svg { width:15px; height:15px; }
-.cal-nav-btn:hover { background:var(--sky-glow); border-color:var(--border-hover); color:var(--sky); }
+.cal-nav-btn:hover:not(:disabled) { background:var(--sky-glow); border-color:var(--border-hover); color:var(--sky); }
+.cal-nav-btn:disabled { opacity:0.28; cursor:not-allowed; }
 
 .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
 .cal-dow { text-align:center; font-size:0.58rem; font-weight:700; color:var(--text-muted); padding:4px 0; letter-spacing:0.1em; }
@@ -111,6 +103,92 @@
 .cal-day.past    { background:transparent; border-color:transparent; color:var(--text-muted); cursor:not-allowed; opacity:0.3; }
 .cal-day.today   { border-color:var(--border-hover); color:var(--sky); font-weight:700; background:var(--glass-bg-hover); }
 .cal-day.selected { background:var(--sky) !important; border-color:var(--sky) !important; color:var(--btn-on-sky) !important; font-weight:800; transform:scale(1.06); box-shadow:0 4px 20px var(--sky-glow); }
+
+/* ── Mobile date rail ──
+   Phones get this instead of the month grid: a forward-only horizontal strip
+   that opens on today. The rail bleeds past the card padding so the next pill
+   peeks in at the edge — that peek is the only affordance telling a thumb it
+   scrolls. Rendered on mobile only (see Appointment.jsx), so no desktop reset. */
+.strip-panel { flex:1; min-width:0; }
+
+.strip-head {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; margin-bottom:14px;
+}
+.strip-nav { display:flex; gap:8px; flex-shrink:0; }
+
+.date-strip {
+  --pill-w: 58px;
+  --pill-gap: 8px;
+  display:flex;
+  gap:var(--pill-gap);
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;
+  scroll-padding-left:var(--card-pad);
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  /* Bleed out to the card edges, then pad the content back into the gutter. */
+  margin:0 calc(-1 * var(--card-pad));
+  padding:3px var(--card-pad) 4px;
+}
+.date-strip::-webkit-scrollbar { display:none; }
+
+.date-pill {
+  flex:0 0 var(--pill-w);
+  scroll-snap-align:start;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:4px;
+  padding:11px 4px 9px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius:16px;
+  font-family:'Inter',sans-serif;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition: background 0.18s ease, border-color 0.18s ease,
+              transform 0.18s cubic-bezier(0.22,1,0.36,1), box-shadow 0.18s ease;
+}
+.date-pill:active { transform:scale(0.95); }
+
+.date-pill-dow {
+  font-size:0.56rem; font-weight:700; letter-spacing:0.1em;
+  color:var(--text-muted);
+}
+.date-pill-num {
+  font-size:1.2rem; font-weight:700; line-height:1.05;
+  color:var(--glass-text);
+}
+.date-pill-tag {
+  font-size:0.52rem; font-weight:700; letter-spacing:0.07em;
+  text-transform:uppercase; color:var(--sky-dim);
+  min-height:0.78rem; line-height:0.78rem;
+}
+
+/* Sunday runs half-day hours — flag it before the tap, not after. */
+.date-pill.sunday .date-pill-dow { color:var(--pink); opacity:0.75; }
+
+.date-pill.selected {
+  background:var(--sky); border-color:var(--sky);
+  box-shadow:0 8px 22px var(--sky-glow);
+  transform:translateY(-2px);
+}
+.date-pill.selected .date-pill-dow,
+.date-pill.selected .date-pill-num,
+.date-pill.selected .date-pill-tag { color:var(--btn-on-sky); }
+.date-pill.selected .date-pill-dow { opacity:0.7; }
+
+.strip-hint {
+  margin:10px 0 0;
+  font-size:0.68rem; color:var(--text-muted);
+  letter-spacing:0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .date-pill { transition:none; }
+  .date-pill:active { transform:none; }
+  .date-pill.selected { transform:none; }
+}
 
 /* ── Time panel ── */
 .time-panel {
@@ -190,6 +268,62 @@
 .form-group select:focus,
 .form-group textarea:focus { border-color:var(--border-hover); background:var(--sky-glow); }
 
+/* ── Validation ── */
+[data-theme="dark"]  { --form-error: #fca5a5; --form-error-bg: rgba(248,113,113,0.10); }
+:root,
+[data-theme="light"] { --form-error: #c02626; --form-error-bg: rgba(192,38,38,0.06); }
+
+.form-error {
+  font-size:0.72rem; font-weight:600; line-height:1.45;
+  color:var(--form-error);
+}
+.form-error-block {
+  margin:-14px 0 20px;
+  padding:10px 14px; border-radius:10px;
+  background:var(--form-error-bg);
+  border:1px solid color-mix(in srgb, var(--form-error) 28%, transparent);
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+}
+.form-error-link {
+  background:none; border:none; padding:0;
+  font-family:'Inter',sans-serif; font-size:0.72rem; font-weight:700;
+  color:var(--form-error); cursor:pointer; text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"] {
+  border-color:color-mix(in srgb, var(--form-error) 55%, transparent);
+  background:var(--form-error-bg);
+}
+
+/* ── Pre-flight summary ── */
+.confirm-review {
+  margin-top:24px; padding:16px 18px;
+  background:var(--sky-glow);
+  border:1px solid var(--border-hover);
+  border-radius:14px;
+}
+.confirm-review-title {
+  font-size:0.78rem; font-weight:700; letter-spacing:0.04em;
+  color:var(--sky-dim); margin-bottom:14px;
+}
+.confirm-review-grid { display:flex; gap:10px; }
+.confirm-review-row {
+  flex:1; min-width:0;
+  display:flex; flex-direction:column; gap:5px;
+}
+.confirm-review-row dt {
+  font-size:0.62rem; font-weight:700; letter-spacing:0.09em;
+  text-transform:uppercase; color:var(--text-muted);
+}
+.confirm-review-row dd {
+  font-size:0.86rem; font-weight:600; line-height:1.35;
+  color:var(--text-primary);
+  overflow-wrap:anywhere;
+}
+.confirm-review-row dd.is-pending { color:var(--text-muted); font-weight:500; font-style:italic; }
+
 .form-submit {
   margin-top:22px; width:100%;
   background:var(--sky); color:var(--btn-on-sky);
@@ -199,8 +333,10 @@
   display:flex; align-items:center; justify-content:center; gap:9px;
 }
 .form-submit svg { width:17px; height:17px; transition:transform 0.2s ease; }
-.form-submit:hover { filter:brightness(1.08); transform:translateY(-2px); box-shadow:0 8px 28px var(--sky-glow); }
-.form-submit:hover svg { transform:translateX(4px); }
+.form-submit:hover:not(:disabled) { filter:brightness(1.08); transform:translateY(-2px); box-shadow:0 8px 28px var(--sky-glow); }
+.form-submit:hover:not(:disabled) svg { transform:translateX(4px); }
+/* Locked while the WhatsApp handoff is in flight, so a double-tap can't fire twice. */
+.form-submit:disabled { opacity:0.6; cursor:wait; transform:none; filter:none; }
 
 .form-disclaimer { font-size:0.72rem; color:var(--text-muted); margin-top:12px; text-align:center; line-height:1.5; }
 
@@ -229,16 +365,49 @@
 .success-sub { font-size:0.9rem; color:var(--text-secondary); line-height:1.7; }
 
 /* ── Responsive ── */
-@media (max-width:960px) { .appt-wrapper { flex-direction:column; } .form-grid { grid-template-columns:1fr; } }
+@media (max-width:960px) {
+  /* Stacked layout: drop the two-column min-widths, or the 360px form floor
+     outruns a 360px phone's content box and the section clips it. Stretching
+     the line also stops .appt-info's text from sizing against the wider line. */
+  .appt-wrapper { flex-direction:column; align-items:stretch; gap:44px; }
+  .appt-info, .appt-form { flex:none; width:100%; min-width:0; }
+  .booking-card { max-width:none; }
+  .form-grid { grid-template-columns:1fr; }
+}
 @media (max-width:640px) {
+  /* Once a date is picked, collapse the clinic-info list so the calendar
+     and time slots rise into the freed space. Mobile only. */
+  .appt-features {
+    overflow:hidden;
+    max-height:500px;
+    opacity:1;
+    transition:
+      max-height 0.45s cubic-bezier(0.22,1,0.36,1),
+      margin-top 0.45s cubic-bezier(0.22,1,0.36,1),
+      opacity 0.25s ease;
+  }
+  .appt-features.is-collapsed {
+    max-height:0;
+    margin-top:0;
+    opacity:0;
+    pointer-events:none;
+  }
   .cal-time-wrapper { flex-direction:column; }
   .time-panel { width:100%; border-left:none; border-top:1px solid var(--glass-border); padding-left:0; padding-top:20px; margin-left:0; }
   .time-slots { display:grid; grid-template-columns:repeat(3,1fr); max-height:none; }
-  .booking-card { padding:22px 18px; }
+  .booking-card { --card-pad:18px; padding:22px var(--card-pad); }
 }
 @media (max-width:420px) {
   .appointment { padding: 72px 5%; }
   .time-slots { grid-template-columns:repeat(2,1fr); }
   .form-grid { gap:12px; }
-  .booking-card { padding:18px 14px; }
+  .confirm-review-grid { flex-direction:column; gap:12px; }
+  .confirm-review-row { flex-direction:row; align-items:baseline; justify-content:space-between; gap:14px; }
+  .confirm-review-row dd { text-align:right; }
+  .booking-card { --card-pad:14px; padding:18px var(--card-pad); }
+  .date-strip { --pill-w:54px; --pill-gap:7px; }
+}
+
+@media (max-width:640px) and (prefers-reduced-motion: reduce) {
+  .appt-features { transition:none; }
 }
