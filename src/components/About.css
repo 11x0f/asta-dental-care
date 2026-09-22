@@ -16,6 +16,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background:
+    linear-gradient(var(--section-img-scrim), var(--section-img-scrim)),
+    url('../../public/testimonials-bg.webp') center / cover no-repeat var(--bg-2);
 }
 
 /* ── Image shell: starts as a small rounded card, grows to full-bleed ── */
@@ -117,6 +120,11 @@
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .about { height: 280vh; }
+  .about-sticky {
+    background:
+      linear-gradient(var(--section-img-scrim), var(--section-img-scrim)),
+      url('../../public/about-us-mobile-bg.webp') center / cover no-repeat var(--bg-2);
+  }
 }
 @media (max-width: 600px) {
   .about { height: 320vh; }
