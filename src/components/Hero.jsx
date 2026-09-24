@@ -69,7 +69,12 @@ export default function Hero() {
       <div className="circle-badge">
         <svg viewBox="0 0 120 120" className="circle-text-svg" aria-hidden="true">
           <path id="circlePath" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" fill="none" />
-          <text><textPath href="#circlePath" startOffset="0%"> TRUSTED BY KANNUR   ·   SINCE 2024   ·   </textPath></text>
+          {/* textLength = path circumference (2π·46), so the glyphs are spread
+              evenly around the whole ring with no bunching or gap at the seam.
+              xmlSpace keeps the trailing space so "· T" matches "R · S". */}
+          <text xmlSpace="preserve">
+            <textPath href="#circlePath" textLength={2 * Math.PI * 46} lengthAdjust="spacing">TRUSTED BY KANNUR · SINCE 2024 · </textPath>
+          </text>
         </svg>
         <div className="circle-inner">
           <span className="circle-num">3K+</span>
