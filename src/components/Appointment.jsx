@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { services, team } from '../data';
+import { business } from '../data/site';
 import {
   apptIconMap, CalendarIcon, ClockIcon, SuccessIcon,
   ChevronLeftIcon, ChevronRightIcon, ArrowLeftIcon, ArrowRightIcon
@@ -88,7 +89,7 @@ function useIsMobile() {
    No API, no backend: we build the message from live form state, encode it and
    hand off to wa.me, which resolves to the native app on phones and WhatsApp
    Web on desktop. */
-const WA_NUMBER = '919400772354';
+const WA_NUMBER = business.whatsapp;
 const WA_RULE   = '─'.repeat(20);
 
 function to24(slot) {
@@ -134,8 +135,8 @@ function buildWaMessage({ date, time, name, phone, doctor, service, message }) {
 const apptFeatures = [
   { icon: 'clock', accent: '#38bdf8', text: 'Mon – Sat: 9:30 AM – 6:30 PM' },
   { icon: 'calendar', accent: '#818cf8', text: 'Sunday: 9:30 AM – 2:00 PM' },
-  { icon: 'phone', accent: '#f472b6', text: '+91 87146 08881' },
-  { icon: 'check', accent: '#22c55e', text: 'Free consultation & X-rays' },
+  { icon: 'phone', accent: '#f472b6', text: business.phoneDisplay },
+  { icon: 'check', accent: '#22c55e', text: 'Free consultation & registration' },
 ];
 
 export default function Appointment() {

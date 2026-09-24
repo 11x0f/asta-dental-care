@@ -12,7 +12,11 @@ export default function Testimonials() {
       <div className="testimonials-viewport">
         <div className="testimonials-track">
           {[...testimonials, ...testimonials].map((t, i) => (
-            <div key={`${t.name}-${i}`} className="testi-card">
+            <div
+              key={`${t.name}-${i}`}
+              className="testi-card"
+              aria-hidden={i >= testimonials.length}
+            >
               <div className="testi-stars">{'★'.repeat(t.stars)}</div>
               <p className="testi-text">"{t.text}"</p>
               <div className="testi-author">— {t.name}</div>

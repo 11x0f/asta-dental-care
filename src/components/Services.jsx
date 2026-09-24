@@ -38,9 +38,21 @@ export default function Services() {
         <div className="marquee-track">
           {doubled.map((s, i) => {
             const v = serviceVisuals[s.title] || { gradient: 'linear-gradient(135deg, #0c1a2e, #1e3a5f)', icon: '🦷', color: '#38bdf8' };
+            // Second copy of the list exists only to close the marquee loop.
+            // It is hidden from assistive tech, and its images carry no alt
+            // text so the same description is not announced twice.
+            const isClone = i >= services.length;
             return (
-              <div className="service-card" key={i} aria-hidden={i >= services.length}>
-                <img src={v.image} alt={s.title} className="card-bg-img" />
+              <div className="service-card" key={i} aria-hidden={isClone}>
+                <img
+                  src={v.image}
+                  alt={isClone ? '' : `${s.title} at Asta Dental Care, Kannur`}
+                  className="card-bg-img"
+                  width="1672"
+                  height="941"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div className="card-scrim" />
                 <div className="card-visual-glow" style={{ background: v.color }} />
 

@@ -109,6 +109,10 @@
 .hero-headline {
   margin-bottom: 24px;
   line-height: 1;
+  /* This is an <h1>; neutralise the UA font-size/weight so the row classes
+     below remain the only thing that sizes the headline. */
+  font-size: inherit;
+  font-weight: inherit;
 }
 .headline-row {
   display: block;

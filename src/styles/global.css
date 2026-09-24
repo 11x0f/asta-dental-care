@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Google Fonts are loaded from a <link> in public/index.html, not an @import.
+   An @import here would not be discovered until this stylesheet has been
+   downloaded and parsed, adding a serial round trip before first paint. */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -100,6 +102,19 @@ body {
 }
 
 h1, h2, h3 { font-family: 'DM Serif Display', serif; }
+
+/* Available to screen readers and crawlers, removed from the visual layout.
+   Used by the hero <h1>, whose visible words are stylistic and never name the
+   business or the city. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 /* ── Shared section utilities ── */
 .section { padding: 100px 5%; }

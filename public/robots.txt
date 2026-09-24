@@ -1,3 +1,14 @@
 # https://www.robotstxt.org/robotstxt.html
+# Asta Dental Care — https://astadentalcare.in
+
 User-agent: *
-Disallow:
+Allow: /
+
+# Build artefacts carry content-hashed filenames and have no standalone value
+# in search results. Blocking them keeps the crawl budget on real content.
+# Note: CSS and JS are deliberately NOT blocked — Googlebot must fetch them to
+# render this client-rendered app.
+Disallow: /static/js/*.map$
+Disallow: /asset-manifest.json
+
+Sitemap: https://astadentalcare.in/sitemap.xml

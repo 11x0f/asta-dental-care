@@ -1,6 +1,6 @@
 {
   "short_name": "Asta Dental",
-  "name": "Asta Dental Care",
+  "name": "Asta Dental Care — Dental Clinic in Kannur",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +18,16 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#0ea5e9",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "Multi-specialty dental clinic in Chalad, Kannur. Laser dentistry, implants, root canals, Invisalign and braces.",
+  "lang": "en-IN",
+  "scope": "/",
+  "id": "/",
+  "categories": [
+    "health",
+    "medical"
+  ]
 }

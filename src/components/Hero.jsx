@@ -26,15 +26,22 @@ export default function Hero() {
           Trusted by Thousands · Est. 2024
         </div>
 
-        <div className="hero-headline">
-          <div className="headline-row row-1">
+        {/* The page's only <h1>. The visible words are stylistic, so the
+            accessible name is completed with the business name and city —
+            the same thing the logo would say — for crawlers and screen
+            readers. Nothing here changes the rendered layout. */}
+        <h1 className="hero-headline">
+          <span className="headline-row row-1">
             <span className="hl-serif-italic">The</span>
             <span className="hl-serif-italic accent">Aesthetics</span>
-          </div>
-          <div className="headline-row row-2">
+          </span>
+          <span className="headline-row row-2">
             OF YOUR <span className="hl-accent-word">SMILE</span>
-          </div>
-        </div>
+          </span>
+          <span className="sr-only">
+            {' '}— Asta Dental Care, dental clinic in Chalad, Kannur
+          </span>
+        </h1>
 
         <p className="hero-sub">
           World-class dental care in the heart of Kannur.<br />

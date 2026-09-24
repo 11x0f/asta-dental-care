@@ -2,15 +2,32 @@ import React, { useState } from 'react';
 import { faqs } from '../data';
 import './FAQ.css';
 
-function FAQItem({ q, a }) {
+/* The answer stays mounted and is hidden with the `hidden` attribute rather
+   than being conditionally rendered. Unmounting it kept every answer out of
+   the DOM entirely, so crawlers never saw the text that the FAQPage JSON-LD
+   in public/index.html claims is on this page — structured data that does not
+   match visible content is a rich-result violation. Collapsed accordion text
+   is indexed normally. */
+function FAQItem({ q, a, id }) {
   const [open, setOpen] = useState(false);
+  const panelId = `faq-a-${id}`;
+  const btnId = `faq-q-${id}`;
   return (
     <div className="faq-item">
-      <button className="faq-q" onClick={() => setOpen(!open)}>
+      <button
+        type="button"
+        className="faq-q"
+        id={btnId}
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => setOpen(!open)}
+      >
         {q}
-        <span className={`faq-icon${open ? ' open' : ''}`}>+</span>
+        <span className={`faq-icon${open ? ' open' : ''}`} aria-hidden="true">+</span>
       </button>
-      {open && <p className="faq-a">{a}</p>}
+      <p className="faq-a" id={panelId} role="region" aria-labelledby={btnId} hidden={!open}>
+        {a}
+      </p>
     </div>
   );
 }
@@ -23,7 +40,7 @@ export default function FAQ() {
         <h2 className="section-title">Frequently Asked Questions</h2>
       </div>
       <div className="faq-list">
-        {faqs.map(f => <FAQItem key={f.q} {...f} />)}
+        {faqs.map((f, i) => <FAQItem key={f.q} id={i} {...f} />)}
       </div>
     </section>
   );

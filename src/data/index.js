@@ -1,3 +1,5 @@
+import { business, address, mapUrl } from './site';
+
 export const services = [
   { icon: '🦷', title: 'Laser Dentistry', desc: 'Precision treatments with minimal discomfort and faster healing using cutting-edge laser technology.' },
   { icon: '✨', title: 'Cosmetic Treatments', desc: 'Teeth whitening, veneers, and smile makeovers tailored to elevate your confidence.' },
@@ -34,13 +36,18 @@ export const testimonials = [
 ];
 
 export const locations = [
-  { icon: '🏔️', name: 'Kannur', address: 'Asta Dental Care, Grand Icon Building, near Mappila LP School, Chalad, Kannur, Kerala 670014', map: 'https://www.google.com/maps/place/Asta+Dental+Care+Kannur/@11.8814719,75.3516131,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba43ba06dac828d:0xbbe10353809b1dbd!8m2!3d11.8814719!4d75.354188!16s%2Fg%2F11w92d9126' },
+  { icon: '🏔️', name: address.locality, address: address.full, map: mapUrl },
 ];
 
+/* NAP must stay byte-identical to the JSON-LD and to the Google Business
+   Profile, so it is re-exported from site.js rather than retyped here. */
 export const contact = {
-  phone: '7907071833',
-  email: 'astadentalcare24@gmail.com',
-  instagram: 'https://www.instagram.com/asta_dental_care/',
+  phone: business.phone,                 // +917907071833 (voice, tel: links)
+  phoneDisplay: business.phoneDisplay,   // +91 79070 71833
+  whatsapp: business.whatsapp,           // 919400772354 (WhatsApp only)
+  whatsappDisplay: business.whatsappDisplay,
+  email: business.email,
+  instagram: business.instagram,
 };
 
 export const whyUs = [
@@ -77,7 +84,7 @@ export const whyUs = [
 export const faqs = [
   { q: 'How can I book an appointment?', a: 'You can call our reception during working hours or fill out the appointment form on this page. Our staff will confirm your preferred date and time promptly.' },
   { q: 'What are your clinic timings?', a: 'We are open Monday to Saturday, 9:30 AM – 6:30 PM, and Sundays 9:30 AM – 2:00 PM, to fit around your busy schedule.' },
-  { q: 'What payment methods do you accept?', a: 'We accept credit cards, debit cards, cash, and all major digital payment methods for a seamless experience.' },
+  { q: 'What payment methods do you accept?', a: 'We accept cash, and all major digital payment methods for a seamless experience.' },
   { q: 'Should I arrive early for my first visit?', a: 'Yes — arriving 10–15 minutes early helps us complete paperwork and ensures your appointment starts on time without any rush.' },
   { q: 'Are consultation and X-rays free?', a: 'Consultation is completely free. X-rays have a small, affordable fee, since we provide you with a soft copy of the X-ray to keep for future treatment reference.' },
 ];

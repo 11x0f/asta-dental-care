@@ -206,6 +206,8 @@ const AccordionGallery = ({
                 <img
                   src={item.image}
                   alt={item.alt || item.label || ''}
+                  loading="lazy"
+                  decoding="async"
                   draggable="false"
                   style={item.focus ? { objectPosition: item.focus } : undefined}
                 />

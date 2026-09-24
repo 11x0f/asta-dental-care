@@ -16,7 +16,7 @@ const toItem = doc => ({
   image: doc.photo || initialsAvatar(doc.initials, doc.color),
   label: doc.name,
   sublabel: doc.title,
-  alt: doc.name,
+  alt: `${doc.name}, ${doc.title} at Asta Dental Care, Kannur`,
   focus: doc.focus,
   sub: doc.sub,
   placeholder: !doc.photo,
@@ -70,6 +70,10 @@ function TeamMobile() {
           className="team-feature__img"
           src={doc.image}
           alt={doc.alt}
+          width="900"
+          height="1200"
+          loading="lazy"
+          decoding="async"
           style={doc.focus ? { objectPosition: doc.focus } : undefined}
           draggable="false"
         />
@@ -98,6 +102,10 @@ function TeamMobile() {
               <img
                 src={item.image}
                 alt=""
+                width="96"
+                height="96"
+                loading="lazy"
+                decoding="async"
                 style={item.focus ? { objectPosition: item.focus } : undefined}
                 draggable="false"
               />
