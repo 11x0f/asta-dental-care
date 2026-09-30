@@ -41,7 +41,7 @@ export default function Navbar() {
       <nav className={`nav${scrolled ? ' scrolled' : ''}${hidden && !menuOpen ? ' hidden' : ''}`}>
         <a href="#home" className="nav-logo" onClick={() => scrollTo('home')}>
           <img src="/logo.webp" alt="" className="nav-logo-mark" width="56" height="56" decoding="async" />
-          <span className="nav-logo-text">Asta Dental Care</span>
+          <span className="nav-logo-text">ASTA DENTAL CARE</span>
         </a>
 
         <ul className="nav-links">
